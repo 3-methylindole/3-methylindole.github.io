@@ -16,21 +16,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1234567891011121314151617[expression for expr1 in sequence1 if condition1            for expr2 in sequence2 if condition2            for expr3 in sequence3 if condition3            ...            for">
+    <meta name="description" content="12345Name &#x3D; &quot;ada lovelace&quot;print(Name.title())print(Name.upper())print(Name.lower())  title()以首字母大写的方式显示每个单词，即将每个单词的首字母都改为大写 name.upper() 全部改为大写 name.lower() 全部改为小写">
 <meta property="og:type" content="article">
-<meta property="og:title" content="列表解析&#x2F;列表推导式">
-<meta property="og:url" content="http://example.com/2022/03/20/%E6%93%8D%E4%BD%9C%E5%88%97%E8%A1%A8/%E5%88%97%E8%A1%A8%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:title" content="修改字符串大小写">
+<meta property="og:url" content="http://example.com/2022/02/27/%E5%88%97%E8%A1%A8/%E5%88%97%E8%A1%A8%E7%AE%80%E4%BB%8B/%E4%BF%AE%E6%94%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%A7%E5%B0%8F%E5%86%99/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1234567891011121314151617[expression for expr1 in sequence1 if condition1            for expr2 in sequence2 if condition2            for expr3 in sequence3 if condition3            ...            for">
+<meta property="og:description" content="12345Name &#x3D; &quot;ada lovelace&quot;print(Name.title())print(Name.upper())print(Name.lower())  title()以首字母大写的方式显示每个单词，即将每个单词的首字母都改为大写 name.upper() 全部改为大写 name.lower() 全部改为小写">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-20T10:06:32.942Z">
-<meta property="article:modified_time" content="2022-04-02T07:45:54.416Z">
+<meta property="article:published_time" content="2022-02-27T12:39:13.701Z">
+<meta property="article:modified_time" content="2022-03-31T08:27:54.586Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="列表">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>列表解析/列表推导式 - Hexo</title>
+  <title>修改字符串大小写 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="列表解析/列表推导式">
+            <span class="h2" id="subtitle" title="修改字符串大小写">
               
             </span>
 
@@ -191,8 +191,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-03-20 18:06" pubdate>
-        2022年3月20日 晚上
+      <time datetime="2022-02-27 20:39" pubdate>
+        2022年2月27日 晚上
       </time>
     </span>
   
@@ -202,7 +202,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      555 字
+      164 字
     </span>
   
 
@@ -211,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5 分钟
+      2 分钟
     </span>
   
 
@@ -248,18 +248,20 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">列表解析/列表推导式</h1>
+            <h1 style="display: none">修改字符串大小写</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年4月2日 下午
+                  本文最后更新于：2022年3月31日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">[expression <span class="hljs-keyword">for</span> expr1 <span class="hljs-keyword">in</span> sequence1 <span class="hljs-keyword">if</span> condition1<br>            <span class="hljs-keyword">for</span> expr2 <span class="hljs-keyword">in</span> sequence2 <span class="hljs-keyword">if</span> condition2<br>            <span class="hljs-keyword">for</span> expr3 <span class="hljs-keyword">in</span> sequence3 <span class="hljs-keyword">if</span> condition3<br>            ...<br>            <span class="hljs-keyword">for</span> exprN <span class="hljs-keyword">in</span> sequenceN <span class="hljs-keyword">if</span> conditionN]<br><span class="hljs-comment">#列表解析/列表推导式</span><br>squares = [value**<span class="hljs-number">2</span> <span class="hljs-keyword">for</span> value <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>)]<br><span class="hljs-comment">#例：使用列表推导式实现嵌套列表（二维列表）的平铺</span><br>a = [[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>],[<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]]<br>b = [j <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> i]<br><span class="hljs-comment">#例：在列表推导式中使用if过滤不符合条件的元素</span><br>a = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]<br>b = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a <span class="hljs-keyword">if</span> i &lt; <span class="hljs-number">5</span>]<br><span class="hljs-comment">#例：在列表推导式中同时遍历多个列表或可迭代对象</span><br>[(x,y) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>] <span class="hljs-keyword">if</span> x ==<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>] <span class="hljs-keyword">if</span> y != x]<br><span class="hljs-comment">#对包含多个循环的列表推导式，要清楚多个循环的执行顺序和嵌套关系</span><br><br></code></pre></div></td></tr></table></figure>
+              <figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">Name = <span class="hljs-string">&quot;ada lovelace&quot;</span><br><br><span class="hljs-built_in">print</span>(Name.title())<br><span class="hljs-built_in">print</span>(Name.upper())<br><span class="hljs-built_in">print</span>(Name.lower())<br></code></pre></div></td></tr></table></figure>
 
-<h4 id="列表解析-x2F-列表推导式"><a href="#列表解析-x2F-列表推导式" class="headerlink" title="列表解析&#x2F;列表推导式"></a>列表解析&#x2F;列表推导式</h4><p>列表解析将for循环和创建新元素的代码合并成一行，并自动附加新元素，列表推导式可以使用非常简洁的方式对列表或其他可迭代对象的元素进行遍历、过滤或再次计算，快速生成满足需求的新列表。</p>
+<p>title()以首字母大写的方式显示每个单词，即将每个单词的首字母都改为大写</p>
+<p>name.upper() 全部改为大写</p>
+<p>name.lower() 全部改为小写</p>
 
             </div>
             <hr>
@@ -269,7 +271,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%93%8D%E4%BD%9C%E5%88%97%E8%A1%A8/">操作列表</a>
+                      <a class="hover-with-bg" href="/categories/%E5%88%97%E8%A1%A8%E7%AE%80%E4%BB%8B/">列表简介</a>
                     
                   </div>
                 
@@ -294,9 +296,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/20/%E6%93%8D%E4%BD%9C%E5%88%97%E8%A1%A8/%E4%BD%BF%E7%94%A8%E5%88%97%E8%A1%A8%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86/">
+                      <a href="/2022/02/27/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8/%E5%9C%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">使用列表的一部分</span>
+                        <span class="hidden-mobile">在字符串中使用变量</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -304,8 +306,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/20/%E6%93%8D%E4%BD%9C%E5%88%97%E8%A1%A8/%E5%AF%B9%E6%95%B0%E5%AD%97%E5%88%97%E8%A1%A8%E6%89%A7%E8%A1%8C%E7%AE%80%E5%8D%95%E7%9A%84%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97/">
-                        <span class="hidden-mobile">对数字列表进行简单的统计计算</span>
+                      <a href="/2022/02/26/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8/%E4%BC%98%E5%85%88%E7%BA%A7/">
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
