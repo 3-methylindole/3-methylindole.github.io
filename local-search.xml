@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>函数</title>
+    <link href="/2022/04/07/%E5%87%BD%E6%95%B0/%E5%87%BD%E6%95%B0/"/>
+    <url>/2022/04/07/%E5%87%BD%E6%95%B0/%E5%87%BD%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><br></code></pre></div></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>函数</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>函数</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>嵌套</title>
     <link href="/2022/03/31/%E5%AD%97%E5%85%B8/%E5%AD%97%E5%85%B8%EF%BC%8C%E5%88%97%E8%A1%A8%E7%9A%84%E5%B5%8C%E5%A5%97/"/>
     <url>/2022/03/31/%E5%AD%97%E5%85%B8/%E5%AD%97%E5%85%B8%EF%BC%8C%E5%88%97%E8%A1%A8%E7%9A%84%E5%B5%8C%E5%A5%97/</url>
@@ -46,6 +71,31 @@
     <tags>
       
       <tag>字典</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>集合</title>
+    <link href="/2022/03/29/%E9%9B%86%E5%90%88/%E9%9B%86%E5%90%88/"/>
+    <url>/2022/03/29/%E9%9B%86%E5%90%88/%E9%9B%86%E5%90%88/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#集合对象的创建和删除</span><br>s = &#123;<span class="hljs-string">&#x27;xiao&#x27;</span>,<span class="hljs-string">&#x27;xiong&#x27;</span>,<span class="hljs-string">&#x27;xu&#x27;</span>,<span class="hljs-string">&#x27;xie&#x27;</span>&#125;<br>s = <span class="hljs-built_in">set</span>()<br><span class="hljs-keyword">del</span> s<br><span class="hljs-comment">#集合中的每个元素都是独一无二的</span><br><br><span class="hljs-comment">#集合元素增加和删除</span><br>a = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;<br>a.add(<span class="hljs-number">4</span>)<br>a.update(&#123;<span class="hljs-number">3</span>,<span class="hljs-number">4</span>&#125;)<br>a.discard(<span class="hljs-number">1</span>)<br>a.remove(<span class="hljs-number">1</span>)<br>a.pop()<br><br><span class="hljs-comment"># 集合运算</span><br>a = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;<br>b = &#123;<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;<br>a &amp; b <span class="hljs-comment">#交集</span><br>a | b <span class="hljs-comment">#并集</span><br>a - b <span class="hljs-comment">#差集</span><br>&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125; &lt; &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>&#125; <span class="hljs-comment">#真子集</span><br>&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125; &lt;= &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125; <span class="hljs-comment">#子集</span><br><br><br></code></pre></div></td></tr></table></figure><h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>集合（set）属于python无序可变序列，使用一对大括号作为定界符，元素之间使用逗号分隔，同一个集合内的每个元素都是唯一的，不允许重复，集合中只能包含数字、字符串、元组等不可变类型的数据，而不能包含列表、字典、集合等可变类型的数据</p><h3 id="集合对象的创建与删除"><a href="#集合对象的创建与删除" class="headerlink" title="集合对象的创建与删除"></a>集合对象的创建与删除</h3><p>1.直接给集合赋值</p><p>2.使用set（）创建，set（）将列表、元组、字符串、range对象等其他可迭代对象转化为集合，如果有重复元素只保留一个</p><p>3.用del删除整个集合</p><h3 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h3><p>1.add（）增加新元素，如果元素已存在，则被忽略</p><p>2.update（）用于合并另外一个集合中的元素到当前集合中，并自动去除重复元素</p><p>3.pop（）用于随机删除一个元素并返回集合中的一个元素</p><p>4.remove（）删除集合中的元素</p><p>5.discard（）用于从集合中删除一个特定元素</p><h3 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h3><p>并集｜</p><p>交集&amp;</p><p>差集 -</p><p>对称差集 </p><p>&lt; &gt; &gt;&#x3D; &lt;&#x3D;作用于集合时表示集合之间的包含关系</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>集合</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>集合</tag>
       
     </tags>
     
