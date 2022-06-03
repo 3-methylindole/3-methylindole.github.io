@@ -16,23 +16,23 @@
   <meta name="author" content="xzy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="python的运算符及优先级，对不常用的左右移位运算符解释一下">
+    <meta name="description" content="对字符串进行一些操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="运算符">
-<meta property="og:url" content="http://example.com/2022/02/26/%E5%AD%A6%E4%B9%A0%E6%B4%BE/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8/%E4%BC%98%E5%85%88%E7%BA%A7/index.html">
+<meta property="og:title" content="字符串操作">
+<meta property="og:url" content="http://example.com/2022/02/26/%E5%AD%A6%E4%B9%A0%E6%B4%BE/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="python的运算符及优先级，对不常用的左右移位运算符解释一下">
+<meta property="og:description" content="对字符串进行一些操作">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/python_image.jpg">
-<meta property="article:published_time" content="2022-02-26T14:30:36.562Z">
-<meta property="article:modified_time" content="2022-06-03T08:00:22.282Z">
+<meta property="article:published_time" content="2022-02-26T14:23:47.580Z">
+<meta property="article:modified_time" content="2022-06-03T08:18:26.570Z">
 <meta property="article:author" content="xzy">
 <meta property="article:tag" content="python学习笔记（基础）">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/images/python_image.jpg">
   
   
-  <title>运算符 - Hexo</title>
+  <title>字符串操作 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -190,7 +190,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="运算符">
+            <span class="h2" id="subtitle" title="字符串操作">
               
             </span>
 
@@ -205,7 +205,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-26 22:30" pubdate>
+      <time datetime="2022-02-26 22:23" pubdate>
         2022年2月26日 晚上
       </time>
     </span>
@@ -216,7 +216,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      1.3k 字
     </span>
   
 
@@ -225,7 +225,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16 分钟
+      11 分钟
     </span>
   
 
@@ -262,7 +262,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">运算符</h1>
+            <h1 style="display: none">字符串操作</h1>
             
               <p class="note note-info">
                 
@@ -271,179 +271,54 @@
               </p>
             
             <div class="markdown-body">
-              <table>
-<thead>
-<tr>
-<th>运算符说明</th>
-<th>Python运算符</th>
-<th>优先级</th>
-<th align="center">结合性</th>
-<th>优先级顺序</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>小括号</td>
-<td>( )</td>
-<td>19</td>
-<td align="center">无</td>
-<td>高 ︿  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |   |  | 低</td>
-</tr>
-<tr>
-<td>索引运算符</td>
-<td>x[i] 或 x[i1: i2 [:i3]]</td>
-<td>18</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>属性访问</td>
-<td>x.attribute</td>
-<td>17</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>乘方</td>
-<td>**</td>
-<td>16</td>
-<td align="center">右</td>
-<td></td>
-</tr>
-<tr>
-<td>按位取反</td>
-<td>~</td>
-<td>15</td>
-<td align="center">右</td>
-<td></td>
-</tr>
-<tr>
-<td>符号运算符</td>
-<td>+（正号）、-（负号）</td>
-<td>14</td>
-<td align="center">右</td>
-<td></td>
-</tr>
-<tr>
-<td>乘除</td>
-<td>*、&#x2F;、&#x2F;&#x2F;、%</td>
-<td>13</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>加减</td>
-<td>+、-</td>
-<td>12</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>位移</td>
-<td>&gt;&gt;、&lt;&lt;</td>
-<td>11</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>按位与</td>
-<td>&amp;</td>
-<td>10</td>
-<td align="center">右</td>
-<td></td>
-</tr>
-<tr>
-<td>按位异或</td>
-<td>^</td>
-<td>9</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>按位或</td>
-<td>|</td>
-<td>8</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>比较运算符</td>
-<td>&#x3D;&#x3D;、!&#x3D;、&gt;、&gt;&#x3D;、&lt;、&lt;&#x3D;</td>
-<td>7</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>is 运算符</td>
-<td>is、is not</td>
-<td>6</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>in 运算符</td>
-<td>in、not in</td>
-<td>5</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>逻辑非</td>
-<td>not</td>
-<td>4</td>
-<td align="center">右</td>
-<td></td>
-</tr>
-<tr>
-<td>逻辑与</td>
-<td>and</td>
-<td>3</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>逻辑或</td>
-<td>or</td>
-<td>2</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-<tr>
-<td>逗号运算符</td>
-<td>exp1, exp2</td>
-<td>1</td>
-<td align="center">左</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>Python 中大部分运算符都具有左结合性，也就是从左到右执行；只有 ** 乘方运算符、单目运算符（例如 not 逻辑非运算符）、赋值运算符和三目运算符例外，它们具有右结合性，也就是从右向左执行。</p>
-<h2 id="lt-lt-左移运算符"><a href="#lt-lt-左移运算符" class="headerlink" title="&lt;&lt;左移运算符"></a>&lt;&lt;左移运算符</h2><p>Python 左移运算符<code>&lt;&lt;</code>用来把操作数的各个二进制位全部左移若干位，高位丢弃，低位补 0。</p>
-<p>例如，<code>9&lt;&lt;3</code>可以转换为如下的运算：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-string">&lt;&lt;</span> <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0000 </span><span class="hljs-number">1001</span>  <span class="hljs-string">（9</span> <span class="hljs-string">在内存中的存储）</span><br><span class="hljs-string">-----------------------------------------------------------------------------------</span><br>   <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0100 </span><span class="hljs-number">1000</span>  <span class="hljs-string">（72</span> <span class="hljs-string">在内存中的存储）</span><br></code></pre></div></td></tr></table></figure>
+              <h3 id="简单操作"><a href="#简单操作" class="headerlink" title="简单操作"></a>简单操作</h3><p>字符串可以使用+、—、*进行拼接操作</p>
+<ul>
+<li>字符串和字符串可以拼接，但是不能直接和其他数据进行拼接，需要用 <code>str()</code> 来转换</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">s = <span class="hljs-string">&#x27;hello &#x27;</span> + <span class="hljs-string">&#x27;world&#x27;</span><br><span class="hljs-string">&#x27;hello&#x27;</span> * <span class="hljs-number">3</span><br></code></pre></div></td></tr></table></figure>
 
-<p>所以<code>9&lt;&lt;3</code>的结果为 72。</p>
-<p>又如，<code>(-9)&lt;&lt;3</code>可以转换为如下的运算：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-string">&lt;&lt;</span> <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1111 </span><span class="hljs-number">0111</span>  <span class="hljs-string">（-9</span> <span class="hljs-string">在内存中的存储）</span><br><span class="hljs-string">-----------------------------------------------------------------------------------</span><br>   <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1011 </span><span class="hljs-number">1000</span>  <span class="hljs-string">（-72</span> <span class="hljs-string">在内存中的存储）</span><br></code></pre></div></td></tr></table></figure>
 
-<p>所以<code>(-9)&lt;&lt;3</code>的结果为 -72</p>
-<p>如果数据较小，被丢弃的高位不包含 1，那么左移 n 位相当于乘以 2 的 n 次方。</p>
-<p>使用 Python 代码对上面的分析进行验证：</p>
-<figure class="highlight lisp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs lisp">print(<span class="hljs-string">&quot;%X&quot;</span> % (<span class="hljs-number">9</span>&lt;&lt;3) )print(<span class="hljs-string">&quot;%X&quot;</span> % ((<span class="hljs-name">-9</span>)&lt;&lt;3) )<br></code></pre></div></td></tr></table></figure>
 
-<p>运行结果：<br>48<br>-48</p>
-<h2 id="gt-gt-右移运算符"><a href="#gt-gt-右移运算符" class="headerlink" title="&gt;&gt;右移运算符"></a>&gt;&gt;右移运算符</h2><p>Python 右移运算符<code>&gt;&gt;</code>用来把操作数的各个二进制位全部右移若干位，低位丢弃，高位补 0 或 1。如果数据的最高位是 0，那么就补 0；如果最高位是 1，那么就补 1。</p>
-<p>例如，<code>9&gt;&gt;3</code>可以转换为如下的运算：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-string">&gt;&gt;</span> <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0000 </span><span class="hljs-number">1001</span>  <span class="hljs-string">（9</span> <span class="hljs-string">在内存中的存储）</span><br><span class="hljs-string">-----------------------------------------------------------------------------------</span><br>   <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0000 </span><span class="hljs-number">0000</span> <span class="hljs-string">--</span> <span class="hljs-number">0000 </span><span class="hljs-number">0001</span>  <span class="hljs-string">（1</span> <span class="hljs-string">在内存中的存储）</span><br></code></pre></div></td></tr></table></figure>
+<h3 id="split分割操作"><a href="#split分割操作" class="headerlink" title="split分割操作"></a>split分割操作</h3><p>s.split()将s按照空格（包括多个空格，制表符\t，换行符\n等）分割，并返回所有分割得到的字符串。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">line = <span class="hljs-string">&quot;1 2 3 4  5&quot;</span><br>numbers = line.split() <span class="hljs-comment">#默认按空格分隔</span><br><span class="hljs-built_in">print</span>(numbers)<br></code></pre></div></td></tr></table></figure>
 
-<p>所以<code>9&gt;&gt;3</code>的结果为 1。</p>
-<p>又如，<code>(-9)&gt;&gt;3</code>可以转换为如下的运算：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-string">&gt;&gt;</span> <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1111 </span><span class="hljs-number">0111</span>  <span class="hljs-string">（-9</span> <span class="hljs-string">在内存中的存储）</span><br><span class="hljs-string">-----------------------------------------------------------------------------------</span><br>   <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1111 </span><span class="hljs-number">1111</span> <span class="hljs-string">--</span> <span class="hljs-number">1111 </span><span class="hljs-number">1110</span>  <span class="hljs-string">（-2</span> <span class="hljs-string">在内存中的存储）</span><br></code></pre></div></td></tr></table></figure>
+<p>s.split(sep)以给定的sep为分隔符对s进行分割。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">line = <span class="hljs-string">&quot;1,2,3,4,5&quot;</span><br>numbers = line.split(<span class="hljs-string">&#x27;,&#x27;</span>) <span class="hljs-comment">#如果有写分隔符，按指示分隔符分隔</span><br><span class="hljs-built_in">print</span>(numbers)<br></code></pre></div></td></tr></table></figure>
 
-<p>所以<code>(-9)&gt;&gt;3</code>的结果为 -2</p>
-<p>如果被丢弃的低位不包含 1，那么右移 n 位相当于除以 2 的 n 次方（但被移除的位中经常会包含 1）。</p>
-<p>使用 Python 代码对上面的分析进行验证：</p>
-<figure class="highlight lisp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs lisp">print(<span class="hljs-string">&quot;%X&quot;</span> % (<span class="hljs-number">9</span>&gt;&gt;3) )print(<span class="hljs-string">&quot;%X&quot;</span> % ((<span class="hljs-name">-9</span>)&gt;&gt;3) )<br></code></pre></div></td></tr></table></figure>
 
-<p>运行结果：<br>1<br>-2</p>
+
+<h3 id="join连接操作"><a href="#join连接操作" class="headerlink" title="join连接操作"></a>join连接操作</h3><p>与分割相反，s.join(str_sequence)的作用是以s为连接符将字符串序列str_sequence中的元素连接起来，并返回连接后得到的新字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">number = [<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>]<br><span class="hljs-string">&#x27; &#x27;</span>.join(number) <span class="hljs-comment"># 产生新的字符串，原本s并没有被修改</span><br><span class="hljs-built_in">print</span>(number)<br>news = <span class="hljs-string">&#x27;,&#x27;</span>.join(number)<br><span class="hljs-built_in">print</span>(news)<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="replace替换操作"><a href="#replace替换操作" class="headerlink" title="replace替换操作"></a>replace替换操作</h3><p>s.replace(part1, part2)将字符串s中指定的部分part1替换成想要的部分part2，并返回新的字符串。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">s = <span class="hljs-string">&quot;hello world&quot;</span><br>s.replace(<span class="hljs-string">&#x27;world&#x27;</span>, <span class="hljs-string">&#x27;python&#x27;</span>)<br><span class="hljs-comment">#此时，s的值并没有变化，替换方法只是生成了一个新的字符串。</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="count统计操作"><a href="#count统计操作" class="headerlink" title="count统计操作"></a>count统计操作</h3><p>s.count(sub) 返回子字符串在字符串中出现的次数</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">web = <span class="hljs-string">&#x27;http://www.dolphin-labs.com/&#x27;</span><br>web.count(<span class="hljs-string">&#x27;w&#x27;</span>)<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="去除多余空格"><a href="#去除多余空格" class="headerlink" title="去除多余空格"></a>去除多余空格</h3><p>s.strip()返回一个将s两端的多余空格除去的新字符串。</p>
+<p>s.lstrip()返回一个将s开头的多余空格除去的新字符串。</p>
+<p>s.rstrip()返回一个将s结尾的多余空格除去的新字符串。</p>
+<ul>
+<li>还可以使用replace去掉空格</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">s = <span class="hljs-string">&quot;  hello world   &quot;</span><br>s.strip()<br>s.lstrip()<br>s.rstrip()<br>s.replace(<span class="hljs-string">&#x27; &#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>)<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="大小写转化"><a href="#大小写转化" class="headerlink" title="大小写转化"></a>大小写转化</h3><p>s.upper()方法返回一个将s中的字母全部大写的新字符串。</p>
+<p>s.lower()方法返回一个将s中的字母全部小写的新字符串。</p>
+<p>s.title()方法返回一个将s中的首字母大写的新字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-string">&quot;hello world&quot;</span>.upper()<br><span class="hljs-string">&quot;HELLO WORLD&quot;</span>.lower()<br><span class="hljs-string">&quot;hello world&quot;</span>.title()<br></code></pre></div></td></tr></table></figure>
+
+
+
 
             </div>
             <hr>
@@ -478,21 +353,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/27/%E5%AD%A6%E4%B9%A0%E6%B4%BE/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8/%E6%A0%BC%E5%BC%8F%E5%8C%96/">
+                      <a href="/2022/02/26/%E5%AD%A6%E4%B9%A0%E6%B4%BE/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8/%E4%BC%98%E5%85%88%E7%BA%A7/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">字符串格式化</span>
+                        <span class="hidden-mobile">运算符</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2022/02/26/%E5%AD%A6%E4%B9%A0%E6%B4%BE/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/">
-                        <span class="hidden-mobile">字符串操作</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
