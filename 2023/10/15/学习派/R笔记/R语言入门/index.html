@@ -16,23 +16,26 @@
   <meta name="author" content="xzy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="R语言入门简单的实现一些命令样例，有过编程经历会很简单，像学过C、C++、Python等。 四则运算123451+2#35 + (2.3 - 1.123)*3.2&#x2F;1.1 + 1.23E3#1238.418  井号表示注释，这里我标识输出结果。1.23E3表示科学计数法，表示1.23*10^3。 数学函数平方根、指数、对数1234567sqrt(4)# 2exp(1)# 2.718282log10">
+    <meta name="description" content="基于北京大学数学科学学院R语言教案学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="R语言入门">
 <meta property="og:url" content="http://example.com/2023/10/15/%E5%AD%A6%E4%B9%A0%E6%B4%BE/R%E7%AC%94%E8%AE%B0/R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="R语言入门简单的实现一些命令样例，有过编程经历会很简单，像学过C、C++、Python等。 四则运算123451+2#35 + (2.3 - 1.123)*3.2&#x2F;1.1 + 1.23E3#1238.418  井号表示注释，这里我标识输出结果。1.23E3表示科学计数法，表示1.23*10^3。 数学函数平方根、指数、对数1234567sqrt(4)# 2exp(1)# 2.718282log10">
+<meta property="og:description" content="基于北京大学数学科学学院R语言教案学习">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/R%E8%AF%AD%E8%A8%80logo.jpg">
 <meta property="article:published_time" content="2023-10-15T07:49:51.168Z">
-<meta property="article:modified_time" content="2023-10-15T08:16:38.235Z">
+<meta property="article:modified_time" content="2023-10-15T10:44:05.448Z">
 <meta property="article:author" content="xzy">
+<meta property="article:tag" content="R学习笔记（基础）">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/R%E8%AF%AD%E8%A8%80logo.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hexo</title>
+  <title>R语言入门 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="R语言入门"></span>
           
         </div>
 
@@ -302,7 +305,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">R语言入门</h1>
             
             <div class="markdown-body">
               
@@ -332,61 +335,48 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%B4%BE/" class="category-chain-item">学习派</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/">#R学习笔记（基础）</a>
+      
+    </div>
   
 </div>
 
 
               
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div></div>
-      <div>http://example.com/2023/10/15/学习派/R笔记/R语言入门/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>xzy</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2023年10月15日</div>
-        </div>
-      
-      
-      <div class="license-meta-item">
-        <div>许可协议</div>
-        <div>
-          
-            
-            
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
-        </div>
-      </div>
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
 
               
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/15/%E5%AD%A6%E4%B9%A0%E6%B4%BE/R%E7%AC%94%E8%AE%B0/R%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%BF%90%E7%AE%97/" title="">
+                      <a href="/2023/10/15/%E5%AD%A6%E4%B9%A0%E6%B4%BE/R%E7%AC%94%E8%AE%B0/R%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%BF%90%E7%AE%97/" title="R语言数据类型和运算">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">R语言数据类型和运算</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -394,8 +384,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/15/%E5%AD%A6%E4%B9%A0%E6%B4%BE/R%E7%AC%94%E8%AE%B0/R%E8%AF%AD%E8%A8%80%E4%BB%8B%E7%BB%8D/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2023/10/15/%E5%AD%A6%E4%B9%A0%E6%B4%BE/R%E7%AC%94%E8%AE%B0/R%E8%AF%AD%E8%A8%80%E4%BB%8B%E7%BB%8D/" title="R语言介绍">
+                        <span class="hidden-mobile">R语言介绍</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
