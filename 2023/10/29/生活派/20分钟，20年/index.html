@@ -16,26 +16,26 @@
   <meta name="author" content="xzy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="网络爬虫从入门到实战">
+    <meta name="description" content="总能从生活中学到些东西～">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网页基础知识">
-<meta property="og:url" content="http://example.com/2023/10/14/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E7%BD%91%E9%A1%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:title" content="20分钟，20年">
+<meta property="og:url" content="http://example.com/2023/10/29/%E7%94%9F%E6%B4%BB%E6%B4%BE/20%E5%88%86%E9%92%9F%EF%BC%8C20%E5%B9%B4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="网络爬虫从入门到实战">
+<meta property="og:description" content="总能从生活中学到些东西～">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
-<meta property="article:published_time" content="2023-10-14T13:26:50.177Z">
-<meta property="article:modified_time" content="2023-10-29T09:39:11.539Z">
+<meta property="og:image" content="http://example.com/images/%E6%96%87%E5%AD%A6.png">
+<meta property="article:published_time" content="2023-10-29T09:48:15.169Z">
+<meta property="article:modified_time" content="2023-10-29T09:51:53.035Z">
 <meta property="article:author" content="xzy">
-<meta property="article:tag" content="爬虫学习笔记（基础）">
+<meta property="article:tag" content="生活">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
+<meta name="twitter:image" content="http://example.com/images/%E6%96%87%E5%AD%A6.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>网页基础知识 - Hexo</title>
+  <title>20分钟，20年 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -210,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="网页基础知识"></span>
+            <span id="subtitle" data-typed-text="20分钟，20年"></span>
           
         </div>
 
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-14 21:26" pubdate>
-          2023年10月14日 晚上
+        <time datetime="2023-10-29 17:48" pubdate>
+          2023年10月29日 下午
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          1.4k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          19 分钟
+          13 分钟
         
       </span>
     
@@ -305,109 +305,11 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">网页基础知识</h1>
+            <h1 style="display: none">20分钟，20年</h1>
             
             <div class="markdown-body">
               
-              <h1 id="网页基础知识"><a href="#网页基础知识" class="headerlink" title="网页基础知识"></a>网页基础知识</h1><h2 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h2><p>URI：Uniform Resource Identifier 即统一资源标志符</p>
-<p>URL：Uniform Resource Locator 即统一字符定位符</p>
-<p>通过一个链接，便可以从互联网找到某个资源，这个链接就是URI&#x2F;URL</p>
-<p>URL是URI的子集，除了URL，URI还有一个子集</p>
-<p>URN：Uniform Resource Name 即统一资源名称，其只为资源命名而不定位。</p>
-<p><em>URI &#x3D; URN + URL</em></p>
-<p>URL的组成格式：scheme:&#x2F;&#x2F;[username:password@]hostname[:port][&#x2F;path]][;parameters][?query][#fragment]</p>
-<p>【】内的内容代表非必要部分</p>
-<ul>
-<li>scheme:协议，例如http，https，ftp等</li>
-<li>username，password：用户名和密码，某些情况下需要用户名和密码才能访问URL</li>
-<li>hostname：主机地址，可以是域名或者IP地址</li>
-<li>port：端口，可以默认不显示</li>
-<li>Path:路径，指网络资源在服务器的指定地址</li>
-<li>parameters：参数，用来访问某个资源时的附加信息</li>
-<li>query：查询，用来查询资源</li>
-<li>fragment：片段，对资源的补充描述</li>
-</ul>
-<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>中文名“超文本传输协议”，是客户端与服务端进行数据交互的一种形式。</p>
-<p>用于从网络传输超文本数据到本地浏览器的传送协议，它能保证高效而准确的传送超文本内容。</p>
-<ul>
-<li>User-Agent：请求发出者的身份信息。</li>
-<li>Connection：请求完毕后断开(close)连接还是保持(keep alive)连接。</li>
-<li>Content-type：服务器响应回客户端的数据类型。</li>
-</ul>
-<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>安全版的HTTP，在HTTP下加入SSL层。</p>
-<p>加密方式：</p>
-<ul>
-<li>对称密钥加密（不安全）</li>
-<li>非对称密钥加密（不安全）</li>
-<li>证书密钥加密（最安全）</li>
-</ul>
-<h2 id="HTTP请求过程"><a href="#HTTP请求过程" class="headerlink" title="HTTP请求过程"></a>HTTP请求过程</h2><p>过程实际上在浏览器地址栏输入URL回车后，浏览器向网站所在服务器发出一个请求，网站接到请求后处理解析，再返回浏览器。</p>
-<p>打开网页开发者模式，选择Network监听组件（可以在当前访问页面，显示所有网络请求和响应），观察其中一个请求</p>
-<p><img src="/images/http%E8%AF%B7%E6%B1%82.png" srcset="/img/loading.gif" lazyload alt="http请求"></p>
-<p>其中摘要（General）部分：</p>
-<ul>
-<li>Request URL（URL）：请求的URL</li>
-<li>Status Code（状态）：响应状态码</li>
-<li>Remote Adress（地址）：远程服务器的地址和端口</li>
-</ul>
-<p>其中请求部分：</p>
-<ol>
-<li>请求方法：get和post<ul>
-<li>get请求如在百度搜引擎查询一个信息，请求的参数包含在URL中可以看见，提交的数据最多只能有1024字节</li>
-<li>post请求例如登陆表单提交信息，请求的参数包含在一个表单中传输看不见，数据量没有限制</li>
-</ul>
-</li>
-<li>请求的网址：唯一确定客户想要的网址</li>
-<li>请求头：如上图第二个部分所示：<ul>
-<li>Accept：报头域，指定客户端可以接受哪些类型信息</li>
-<li>Accept-Languag：指定客户端可以接受的语言类型</li>
-<li>Accept-Encodin：指定客户端可以接受的编码类型</li>
-<li>Host：指定请求资源的主机IP或端口号</li>
-<li>Cookie：网站辨别用户，当我们刷新或者查看该网站其他页面时，我们都处于登陆状态就是Cookies的功劳</li>
-<li>Referer：标识请求从哪里发出</li>
-<li>User-Agent：使服务器识别客户端的信息，常用来伪装爬虫</li>
-</ul>
-</li>
-<li>请求体：一般承载的是post请求中的表单数据，对于get一般为空</li>
-</ol>
-<p>其中响应部分：</p>
-<ol>
-<li>如上图第三个部分<ul>
-<li>Date：标识响应时间</li>
-<li>Content-Encoding：响应内容的编码</li>
-<li>Server：包含服务器的信息</li>
-<li>Content-Type：返回的数据类型</li>
-<li>Set-Cookie：设置Cookie</li>
-</ul>
-</li>
-<li>响应体：包含服务器返回的具体数据，可以在上图的预览中查看，Google在preview查看。我们主要通过响应体获取动态网页Jason数据和网页源码。</li>
-</ol>
-<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>超文本标记语言，一种用于创建网页的标准标记语言</p>
-<p>标记语言：将文本及文本以外的信息组合在一起的语言</p>
-<p>例如本博客所有文章采用的markdown语言以及Latex排版。</p>
-<p>网站源码使用浏览器开发者模式打开。</p>
-<p><em>考虑到本文不长，还是记一下html语言学习哈哈哈</em></p>
-<h4 id="HTML标题"><a href="#HTML标题" class="headerlink" title="HTML标题"></a>HTML标题</h4><p>通过&lt;h1&gt;-&lt;h6&gt;标签来定义</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><br>  这是我的博客<br><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="HTML段落"><a href="#HTML段落" class="headerlink" title="HTML段落"></a>HTML段落</h4><p>通过&lt;p&gt;标签定义</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><br>  第一个段落<br><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="HTML链接"><a href="#HTML链接" class="headerlink" title="HTML链接"></a>HTML链接</h4><p>通过&lt;a&gt;标签来定义</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span> = <span class="hljs-string">&quot;https://3-methylindole.github.io&quot;</span>&gt;</span>我的博客链接<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>href 属性中指定链接的地址</p>
-<h4 id="HTML图像"><a href="#HTML图像" class="headerlink" title="HTML图像"></a>HTML图像</h4><p>通过&lt;img&gt;标签定义</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">decoding</span>=<span class="hljs-string">&#x27;async&#x27;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;/images/爬虫logo.png&#x27;</span> <span class="hljs-attr">alt:</span>&#x27;爬虫<span class="hljs-attr">logo</span>&#x27; <span class="hljs-attr">width</span> = <span class="hljs-string">&#x27;250&#x27;</span> <span class="hljs-attr">height</span> = <span class="hljs-string">&#x27;250&#x27;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>src属性：指定文件路径</p>
-<p>alt属性：图片无法显示时替代的文本</p>
-<p>附：[html菜鸟教程][<a target="_blank" rel="noopener" href="https://www.runoob.com/html/html-tutorial.html]">https://www.runoob.com/html/html-tutorial.html]</a></p>
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>层叠样式表，为HTML定义布局</p>
-<p>css通过改变HTML中标签的样式来定义布局</p>
-<p>利用属性选择器改变标签样式</p>
-<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>脚本语言，实现用户与网页的互动</p>
-<p>和CSS一样让网页更美观。</p>
+              <h1 id="20分钟，20年"><a href="#20分钟，20年" class="headerlink" title="20分钟，20年"></a>20分钟，20年</h1><p>今天下班回家，叫了一辆滴滴，司机是位大叔，看起来年纪不大，也很有精神，我们上车后用，他用很洪亮的声音询问手机尾号是否正确，然后就启动了车。<br>随后老板开始跟我讲业务有关问题，我也询问了一些公司情况，然后车内陷入沉默，老板在看手机，我在看窗外风景，司机在开车。突然司机环顾了一下周围，问道：“这里是松岗吗？”<br>老板听见后回复说，<br>“不是，这是福永”<br>“福永很大啊，松岗离这里很近吧”<br>“嗯”…然后车内又陷入沉默。车行驶到一个红绿灯停了下来，周围是一大片在建的房子。大叔见状说，<br>“建这么多房子可不好卖啊，房地产的时代要过去了”<br>老板听完说，<br>“嗯…不是房地产要完，是现在经济萧条，老百姓把钱揣兜里不花，要是经济好，赚的钱多，这房子都会卖完”<br>“对啊，这里的房子都不好卖，那像五六线城市更不好卖了，像我们那种小县城”<br>“嗯，深圳都卖不出，其他地方不用说了”绿灯亮起，大叔启动车子继续走。<br>“现在在这买套房子不如在老家做栋别墅舒服”<br>“你在老家住医疗教育怎么办，这里晚上一两点医院都有人，你在老家晚上还没送到医院就挂了怎么办”大叔笑了两声不作声，车内又进入沉默。<br>随后老板突然问起，“你在深圳做了多久？”<br>“20年”<br>“20年？”<br>“你之前做什么的？”<br>“我刚来深圳是做报刊的”<br>大叔声音突然洪亮起来，“你不知道，那个时候报刊可赚钱了，一份报赚几毛钱，一天卖几百份，每天报纸不一样，每天都可以赚…”<br>“后来呢，后来做什么？”<br>大叔意犹未尽，又说了很久自己卖报的故事，老板又重新问了一遍，大叔才说道，<br>“后来啊，后来互联网起来了，报刊行业就不赚钱了，没做这行了，回家做生意去了，然后就亏了，一切从头开始”<br>老板听了后笑着问道<br>“做什么生意能一下亏这么多”<br>大叔没有继续说…老板又问道，<br>“然后呢，又做什么？”<br>“然后又来深圳了，做了一年快递，做了一年货拉拉”<br>“货拉拉可以啊”<br>“哎，也不行，再后来又跑这个滴滴”大叔说的很无奈，还特意锤了一下方向盘。<br>“这个车是我自己买的你知道吧，期限是八年，18年买的，再过几年就不能开了，我准备跑完回家了。”大叔说的很心酸，又继续说道<br>“这就是我刚刚为什么跟你说回农村住好，在这里我这个年纪已经做不动了，拼不过那些小年轻，这么多年为了混口饭吃也做累了，不想做啦”<br>老板问，“那你回去准备做什么呢”，<br>大叔没有直接回答，而是开始发起牢骚，<br>“ 那时我做报刊赚了钱准备在深圳买套房子，但是我老婆不允许，我想，买套房子两口天天吵架也不好吧，就没买”<br>“嗯”<br>“这个每个人眼光都不同，谁都不会想到现在房子涨这么厉害，这么值钱”<br>大叔话语间没有丝毫怪罪老婆的意思，他的老婆一定很幸福。<br>老板又重新问“回去准备做啥”，<br>“准备做餐饮”老板笑了起来，“我家楼下几家餐馆都不知道换了几次了，做餐饮要有特色，你认识好的厨师吗”，<br>“小地方那不一样，我请两个厨师，口味可以控制”，<br>此时车已到站，我和老板准备下车，老板最后笑着说了一句，<br>“那成本多高，你别到时候两个厨师都跑了”，<br>老板没有再回复，而是说了一句我让我印象深刻的话，<br>“谢谢！”<br>声音很洪亮，我在马路边都能听到，大叔离开了。<br>老板对我说，“听见了没，你不前进就会被时代抛弃，他当时讲卖报的时候都风光，人一旦只要满足于现状就会被时代抛弃，要时刻创新。”<br>老板随后又补了一句。<br>“他嘴上说农村好，这么多年不也没回去，回去能赚多少钱？”<br>这段车内对话让我难以忘怀，躺在床上一直在想也睡不着，还是决定记录下来，我想里面包含很多内容，需要我们去慢慢体会，心里真的是五味陈杂，不知道如何表达，留给大家自己体会吧。</p>
 
               
             </div>
@@ -425,7 +327,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%B4%BE/" class="category-chain-item">学习派</a>
+  <a href="/categories/%E7%94%9F%E6%B4%BB%E6%B4%BE/" class="category-chain-item">生活派</a>
   
   
 
@@ -440,7 +342,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/">#爬虫学习笔记（基础）</a>
+        <a href="/tags/%E7%94%9F%E6%B4%BB/">#生活</a>
       
     </div>
   
@@ -454,18 +356,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/15/%E5%AD%A6%E4%B9%A0%E6%B4%BE/R%E7%AC%94%E8%AE%B0/R%E8%AF%AD%E8%A8%80%E4%BB%8B%E7%BB%8D/" title="R语言介绍">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">R语言介绍</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/09/%E5%AD%A6%E4%B9%A0%E6%B4%BE/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Ubuntu%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" title="Ubuntu文件管理">
-                        <span class="hidden-mobile">Ubuntu文件管理</span>
+                      <a href="/2023/10/18/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BA%BF%E6%80%A7%E8%A1%A8/" title="线性表">
+                        <span class="hidden-mobile">线性表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
