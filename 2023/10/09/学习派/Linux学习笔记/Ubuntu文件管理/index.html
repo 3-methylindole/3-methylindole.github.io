@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/ubuntu%20logo.jpg">
 <meta property="article:published_time" content="2023-10-09T13:46:42.272Z">
-<meta property="article:modified_time" content="2023-10-15T10:47:29.625Z">
+<meta property="article:modified_time" content="2023-10-28T08:59:09.056Z">
 <meta property="article:author" content="xzy">
 <meta property="article:tag" content="Linux学习笔记（基础）">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          248 字
+          3.9k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          3 分钟
+          33 分钟
         
       </span>
     
@@ -309,7 +309,7 @@
             
             <div class="markdown-body">
               
-              <h1 id="Ubuntu文件管理"><a href="#Ubuntu文件管理" class="headerlink" title="Ubuntu文件管理"></a>Ubuntu文件管理</h1><h2 id="几种文件系统介绍"><a href="#几种文件系统介绍" class="headerlink" title="几种文件系统介绍"></a>几种文件系统介绍</h2><p>文件系统是解决如何在存储设备上存储数据的一套方法</p>
+              <h1 id="Ubuntu文件管理"><a href="#Ubuntu文件管理" class="headerlink" title="Ubuntu文件管理"></a>Ubuntu文件管理</h1><h2 id="几种文件系统介绍"><a href="#几种文件系统介绍" class="headerlink" title="几种文件系统介绍"></a>几种文件系统介绍</h2><p><strong>文件系统是解决如何在存储设备上存储数据的一套方法</strong></p>
 <p>目前windows操作系统常用的文件系统</p>
 <ul>
 <li>FAT：兼容性最好，最大仅支持2GB分区。</li>
@@ -324,7 +324,486 @@
 <li>Ext3</li>
 <li>Ext4</li>
 </ul>
-<h2 id="文件系统的概念"><a href="#文件系统的概念" class="headerlink" title="文件系统的概念"></a>文件系统的概念</h2>
+<h2 id="文件系统的概念"><a href="#文件系统的概念" class="headerlink" title="文件系统的概念"></a>文件系统的概念</h2><p>一切都是文件，实现设备无关性。</p>
+<p>UNIX系统把每个硬件都看成是一个文件，通常称为设备文件，这样用户就可以通过读写文件的方式实现对硬件的访问，而Linux正是重写UNIX而来的。</p>
+<ul>
+<li><p>物理磁盘到文件系统</p>
+<p>  硬盘有数个盘片，每个盘片有两面，每面有一个磁头</p>
+<p>  盘片被划分为多个扇形区域即扇区</p>
+<p>  同一盘片的不同半径的同心轨道称为磁道</p>
+<p>  不同盘片相同半径构成的圆柱面称为柱面</p>
+<p>  扇区、磁道和磁头构成了硬盘结构的基本参数</p>
+<p>  这些参数可以计算硬盘容量：</p>
+<p>  <strong>存储容量&#x3D;磁头数*磁道数*每道扇区数*每扇区字节数</strong></p>
+<p>  Linux将磁盘分为三个区域进行管理</p>
+<ul>
+<li>超级块：存放文件系统本身的结构信息，例如记录每个区域的大小，存放未被使用的磁盘块信息</li>
+<li>i-点表：每个i-节点就对应一个文件&#x2F;目录的结构</li>
+<li>数据区：文件的内容保存在这里</li>
+</ul>
+</li>
+<li><p>存储介质</p>
+<p>  用来存储数据的物理设备：硬盘、光盘</p>
+</li>
+<li><p>磁盘分区</p>
+<p>  将硬盘分割为大小不一的多个区域，以便规划和满足实际的需要</p>
+</li>
+<li><p>格式化</p>
+<p>  创建新的文件系统的一个过程，先进行磁盘分区，再进行文件系统的创建或格式化</p>
+</li>
+<li><p>挂载</p>
+<p>  激活一个文件系统</p>
+</li>
+</ul>
+<h2 id="文件与目录的定义"><a href="#文件与目录的定义" class="headerlink" title="文件与目录的定义"></a>文件与目录的定义</h2><p>Linux以文件表示所有的逻辑实体和非逻辑实体</p>
+<ul>
+<li>逻辑实体：文件与目录</li>
+<li>非逻辑实体：泛指硬盘、终端机和打印机等</li>
+</ul>
+<p>Linux文件名由字母、标点和数字构成，中间不能有空格、转意符和有关shell的关键符</p>
+<p>Linux文件系统以根目录最为重要，根目录下有：</p>
+<ul>
+<li>&#x2F;etc：系统所需要的配置文件和管理文件</li>
+<li>&#x2F;dev：存放装置文件，是访问外部设备的一个端口，包含所有在系统中使用的外部设备</li>
+<li>&#x2F;boot：与系统激活的相关文件，系统启动时要用到的</li>
+<li>&#x2F;home：登陆用户的主目录</li>
+<li>&#x2F;lib：函数库，几乎所有的应用程序都会用到</li>
+<li>&#x2F;root：系统管理用户root的主目录，超级用户的主目录</li>
+<li>&#x2F;bin：存放一些系统启动时所需要的普通程序和系统程序，及一些经常被其他程序调用的程序，是linux常用外部命令的存放处</li>
+</ul>
+<h2 id="文件结构、类型和属性"><a href="#文件结构、类型和属性" class="headerlink" title="文件结构、类型和属性"></a>文件结构、类型和属性</h2><ol>
+<li><p>文件结构</p>
+<p> 文件存放在磁盘等存储设备上的组织方法，Linux采用的是树形结构，最上面是根目录。</p>
+<p> linux文件路径有两种表示方法</p>
+<ul>
+<li>绝对路径：从根目录开始的路径</li>
+<li>相对路径：以“.”或“..”开始的，“.”表示用户当前操作处的目录，“..”表示上级目录</li>
+</ul>
+</li>
+<li><p><strong>文件类型</strong></p>
+<p> 普通文件：使用ls -l查看文件属性，其属性左侧第一列为“-”</p>
+<p> 纯文本文件：属于普通文件，使用cat、vi直接查看文件内容</p>
+<p> 目录文件：使用ls -l查看文件属性，其属性左侧第一列为“d”</p>
+<p> 链接文件：分为符号链接和硬链接，符号链接相当于win的快捷方式，使用ls -l查看文件属性，符号链接属性左侧第一列为“l”</p>
+<p> 设备文件：使用ls -l查看文件属性，字符设备文件属性左侧第一列为“c”，块设备文件为“b”</p>
+<p> 套接字文件：使用ls -l查看文件属性，其属性左侧第一列为“s”</p>
+<p> 管道文件：使用ls -l查看文件属性，其属性左侧第一列为“p”</p>
+</li>
+<li><p>文件属性</p>
+<p> 读（r&#x2F;4）写（w&#x2F;2）执行（x&#x2F;1）</p>
+<p> 可以设置任意组合</p>
+</li>
+</ol>
+<h2 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h2><h4 id="显示文件命令"><a href="#显示文件命令" class="headerlink" title="显示文件命令"></a>显示文件命令</h4><ol>
+<li><p>cat：串接文件或显示文件内容，也可以从标准输入设备读取数据并将其结果重定向到新文件中，达到新建文件的目的</p>
+<ul>
+<li><p>串接输入内容到文件</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat -&gt;a.txt<br>cat &gt;a.txt<br><span class="hljs-meta prompt_">#</span><span class="language-bash">从输入设备输入到文件，若文件不存在则新建</span><br>cat &gt;a.txt&lt;&lt;EOF<br><span class="hljs-meta prompt_">#</span><span class="language-bash">输入EOF则退出编辑</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>显示文件内容到屏幕</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-n或- number</td>
+<td align="center">由1开始对所有行编号</td>
+</tr>
+<tr>
+<td align="center">-b</td>
+<td align="center">对空行不编号</td>
+</tr>
+<tr>
+<td align="center">-s</td>
+<td align="center">遇到连续两行空行代还为一行</td>
+</tr>
+<tr>
+<td align="center">-E</td>
+<td align="center">在每行结束显示$</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>显示文件内容到文件</p>
+<p>  格式1:</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat a1.txt a3.txt&gt;a3.txt<br><span class="hljs-meta prompt_">#</span><span class="language-bash">&gt;表示重定向，若a3.txt不存在则新建</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">若a3.txt内容存在则会被清空</span><br></code></pre></td></tr></table></figure>
+
+<p>  格式2：</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat a1.txt a3.txt&gt;&gt;a3.txt<br><span class="hljs-meta prompt_">#</span><span class="language-bash">&gt;&gt;表示追加重定向，加到a3.txt尾部</span>     <br><span class="hljs-meta prompt_">#</span><span class="language-bash">a3.txt文件内容不会被清空</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>more：显示输出的内容，然后根据窗口的大小进行<strong>分页显示</strong>，在终端底部打印“-More-”及已显示占总文本的百分比</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">f或&lt;空格&gt;</td>
+<td align="center">显示下一页</td>
+</tr>
+<tr>
+<td align="center">&lt;回车&gt;</td>
+<td align="center">显示下一行</td>
+</tr>
+<tr>
+<td align="center">q或Q</td>
+<td align="center">退出</td>
+</tr>
+<tr>
+<td align="center">+number</td>
+<td align="center">从number行开始显示</td>
+</tr>
+<tr>
+<td align="center">-number</td>
+<td align="center">每屏只显示number行</td>
+</tr>
+<tr>
+<td align="center">+&#x2F;pattern</td>
+<td align="center">从文件中的第一个pattern的前两行开始显示</td>
+</tr>
+<tr>
+<td align="center">-c</td>
+<td align="center">从顶部清屏开始显示</td>
+</tr>
+<tr>
+<td align="center">-d</td>
+<td align="center">出现提示</td>
+</tr>
+<tr>
+<td align="center">-s</td>
+<td align="center">把连续多个空行显示一行</td>
+</tr>
+<tr>
+<td align="center">-u</td>
+<td align="center">把文件内容的下划线去掉</td>
+</tr>
+</tbody></table>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">more +2 test1<br><span class="hljs-meta prompt_">#</span><span class="language-bash">从第二行开始显示</span><br>more -2 test1<br><span class="hljs-meta prompt_">#</span><span class="language-bash">每屏只显示两行</span><br>more +/2 test1<br><span class="hljs-meta prompt_">#</span><span class="language-bash">从文件中出现的第一个“2”的前两行开始显示</span><br>more -dc test1<br><span class="hljs-meta prompt_">#</span><span class="language-bash">显示提示，并从终端顶部开始显示</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>less：显示输出的内容，根据窗口大小分页显示</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-m</td>
+<td align="center">显示读取文件的百分比</td>
+</tr>
+<tr>
+<td align="center">-M</td>
+<td align="center">显示百分比，行号，总行数</td>
+</tr>
+<tr>
+<td align="center">-N</td>
+<td align="center">每行前输出行号</td>
+</tr>
+<tr>
+<td align="center">-s</td>
+<td align="center">连续多个空白行显示为一个</td>
+</tr>
+<tr>
+<td align="center">-c</td>
+<td align="center">从上到下刷新屏幕并显示</td>
+</tr>
+<tr>
+<td align="center">-f</td>
+<td align="center">强制打开文件</td>
+</tr>
+<tr>
+<td align="center">-i</td>
+<td align="center">搜索时忽略大小写，除非搜索串中存在大写字母</td>
+</tr>
+<tr>
+<td align="center">-I</td>
+<td align="center">搜索时忽略大小写，除非搜索串中存在小写字母</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>head：显示文件前n行&#x2F;段，不带选项默认10行</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-n</td>
+<td align="center">显示前n行</td>
+</tr>
+<tr>
+<td align="center">-c</td>
+<td align="center">显示前c个字节</td>
+</tr>
+</tbody></table>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">head -n 5 test1<br>head -5 test1<br><span class="hljs-meta prompt_">#</span><span class="language-bash">显示前5行内容</span><br>head -n -5 test1<br><span class="hljs-meta prompt_">#</span><span class="language-bash">显示文件除后五行以外所有内容</span><br>head -c 5 test1<br><span class="hljs-meta prompt_">#</span><span class="language-bash">显示前五个字节</span><br>head -c 25 test1<br><span class="hljs-meta prompt_">#</span><span class="language-bash">显示除了最后25个字节以外的所有内容</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>tail：显示文件最后n行，默认是10</p>
+</li>
+<li><p><strong>echo</strong>：在显示器上显示一段文字，输出字符串间以空白字符隔开，并在最后加上换行符</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-n</td>
+<td align="center">不输出末尾换行符</td>
+</tr>
+<tr>
+<td align="center">-e</td>
+<td align="center">启用反斜线转意</td>
+</tr>
+<tr>
+<td align="center">\a</td>
+<td align="center">发出警报声</td>
+</tr>
+<tr>
+<td align="center">\c</td>
+<td align="center">最后不加上换行符</td>
+</tr>
+<tr>
+<td align="center">\f</td>
+<td align="center">换行但光标人停留在原来位置</td>
+</tr>
+<tr>
+<td align="center">\nnn</td>
+<td align="center">插入八进制所代表的ASCII字符</td>
+</tr>
+<tr>
+<td align="center">\b</td>
+<td align="center">退格</td>
+</tr>
+<tr>
+<td align="center">\ \</td>
+<td align="center">反斜线</td>
+</tr>
+<tr>
+<td align="center">\n</td>
+<td align="center">另起一行</td>
+</tr>
+<tr>
+<td align="center">\r</td>
+<td align="center">回车</td>
+</tr>
+<tr>
+<td align="center">\t</td>
+<td align="center">插入tab</td>
+</tr>
+<tr>
+<td align="center">\v</td>
+<td align="center">垂直制表符</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>od：进制输出</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">od -b test1<br><span class="hljs-meta prompt_">#</span><span class="language-bash">八进制输出</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="显示目录及文件"><a href="#显示目录及文件" class="headerlink" title="显示目录及文件"></a>显示目录及文件</h4><ol>
+<li><p>ls：列出目录的内容，list的简写</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-a</td>
+<td align="center">显示所有文件</td>
+</tr>
+<tr>
+<td align="center">-A</td>
+<td align="center">显示所有文件，但不显示上一级目录</td>
+</tr>
+<tr>
+<td align="center">-b</td>
+<td align="center">显示当前工作目录下的目录</td>
+</tr>
+<tr>
+<td align="center">-l</td>
+<td align="center">显示出文件的详细信息</td>
+</tr>
+<tr>
+<td align="center">-F</td>
+<td align="center">附加文件类别，符号在文件名最后</td>
+</tr>
+<tr>
+<td align="center">-d</td>
+<td align="center">如果参数是目录，其下文件不显示</td>
+</tr>
+<tr>
+<td align="center">-t</td>
+<td align="center">文件按创建时间依次显示</td>
+</tr>
+<tr>
+<td align="center">-R</td>
+<td align="center">递归显示目录，若目录下有文件，则以下文件也会显示</td>
+</tr>
+<tr>
+<td align="center">-i</td>
+<td align="center">显示文件索引节点信息</td>
+</tr>
+<tr>
+<td align="center">-r</td>
+<td align="center">将文件以相反次序显示（默认英文字母顺序）</td>
+</tr>
+</tbody></table>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">ls -l work<br><span class="hljs-meta prompt_">#</span><span class="language-bash">将work目录下的详细文件显示出来</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">第一列显示文件类型</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">第二列显示文件数目</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">第三列显示文件所有者</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">第四列显示所属的组名字</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">第五列显示文件字节数</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">第六-八列显示上次修改时间</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">第九列显示文件名</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>pwd：显示当前工作目录的完整路径</p>
+</li>
+<li><p>cd：改变当前工作目录</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd ..<br><span class="hljs-meta prompt_">#</span><span class="language-bash">返回上一级</span><br>cd ～<br><span class="hljs-meta prompt_">#</span><span class="language-bash">回到用户主目录</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="文件创建、删除命令"><a href="#文件创建、删除命令" class="headerlink" title="文件创建、删除命令"></a>文件创建、删除命令</h4><ol>
+<li><p>touch：生成空文件和修改文件存取时间</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-d</td>
+<td align="center">以yyyymmdd的形式修改时间</td>
+</tr>
+<tr>
+<td align="center">-a</td>
+<td align="center">只更改存取时间</td>
+</tr>
+<tr>
+<td align="center">-c</td>
+<td align="center">不建立任何文档</td>
+</tr>
+<tr>
+<td align="center">-m</td>
+<td align="center">只更改变动时间</td>
+</tr>
+<tr>
+<td align="center">-r</td>
+<td align="center">将指定文档时间设成参考文档的时间</td>
+</tr>
+</tbody></table>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">touch t1 t2<br><span class="hljs-meta prompt_">#</span><span class="language-bash">创建新文件t1，t2</span><br>touch -r a t1<br><span class="hljs-meta prompt_">#</span><span class="language-bash">将t1的文件时间更改为和文件a一样</span><br>touch -d &quot;2020-08-22 20:25:30&quot; a<br><span class="hljs-meta prompt_">#</span><span class="language-bash">将a的时间更改为指定的时间</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>rm：删除指定文件</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-f</td>
+<td align="center">强制删除</td>
+</tr>
+<tr>
+<td align="center">-i</td>
+<td align="center">删除前出现提示</td>
+</tr>
+<tr>
+<td align="center">-r</td>
+<td align="center">递归删除目录及其内容</td>
+</tr>
+<tr>
+<td align="center">-I</td>
+<td align="center">删除超过三个文件或递归删除前需要确认</td>
+</tr>
+</tbody></table>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">rm -i *.doc<br><span class="hljs-meta prompt_">#</span><span class="language-bash">删除所有的.doc文件，删除前会有提示</span><br>rm -ri documents<br><span class="hljs-meta prompt_">#</span><span class="language-bash">删除目录documents及其子目录和子目录中的所有文件，删除前会有逐个提示</span><br>rm -rI documents<br><span class="hljs-meta prompt_">#</span><span class="language-bash">一次性确认全部删除</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="目录创建删除命令"><a href="#目录创建删除命令" class="headerlink" title="目录创建删除命令"></a>目录创建删除命令</h4><ol>
+<li><p>mkdir：目录创建</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-p</td>
+<td align="center">依次创建目录</td>
+</tr>
+<tr>
+<td align="center">-m</td>
+<td align="center">设置权限模式</td>
+</tr>
+<tr>
+<td align="center">-v</td>
+<td align="center">显示创建过程信息</td>
+</tr>
+</tbody></table>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir test<br><span class="hljs-meta prompt_">#</span><span class="language-bash">当前目录创建子目录<span class="hljs-built_in">test</span></span><br>mkdir -p t/t1<br><span class="hljs-meta prompt_">#</span><span class="language-bash">创建子目录t，并在t下创建子目录t1</span><br>mkdir -vp scf/&#123;lib/,bin/,doc/&#123;info.product&#125;&#125;<br><span class="hljs-meta prompt_">#</span><span class="language-bash">同时创建多个用户并显示过程</span><br></code></pre></td></tr></table></figure>
+
+<p> -m用来设置权限，读（4）写（2）执行（1），它们的和表达了对该目录的权限，例如7表示可以读、写和执行。</p>
+<p> -m参数的含义</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">600</td>
+<td align="center">只有所有者可以读和写</td>
+</tr>
+<tr>
+<td align="center">644</td>
+<td align="center">所有者读和写，组用户只能读</td>
+</tr>
+<tr>
+<td align="center">666</td>
+<td align="center">每个人都有读写的权利</td>
+</tr>
+<tr>
+<td align="center">700</td>
+<td align="center">所有者可以读写执行</td>
+</tr>
+<tr>
+<td align="center">777</td>
+<td align="center">每个人可以读写执行</td>
+</tr>
+</tbody></table>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir -m 777 test<br><span class="hljs-meta prompt_">#</span><span class="language-bash">创建目录<span class="hljs-built_in">test</span>，每个人都有读写执行的权限</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>rmdir：删除空目录，有文件需要先删除文件</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-p</td>
+<td align="center">当子目录被删除后，若父目录为空则一起删除</td>
+</tr>
+<tr>
+<td align="center">-v</td>
+<td align="center">显示删除步骤</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h4 id="复制、移动命令"><a href="#复制、移动命令" class="headerlink" title="复制、移动命令"></a>复制、移动命令</h4><p>1.cp：将文件目录复制到另一个文件中</p>
+
               
             </div>
             <hr/>
