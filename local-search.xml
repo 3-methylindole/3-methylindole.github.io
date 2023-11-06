@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>【Mac】打造vs code最强编辑器</title>
+    <link href="/2023/11/06/%E6%8A%98%E8%85%BE%E6%B4%BE/%E6%89%93%E9%80%A0vs%20code%E6%9C%80%E5%BC%BA%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+    <url>/2023/11/06/%E6%8A%98%E8%85%BE%E6%B4%BE/%E6%89%93%E9%80%A0vs%20code%E6%9C%80%E5%BC%BA%E7%BC%96%E8%BE%91%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="什么是vs-code"><a href="#什么是vs-code" class="headerlink" title="什么是vs code"></a>什么是vs code</h2><p>关于什么是vs code，我们先来看看<a href="https://code.visualstudio.com/docs">官网</a>介绍</p><blockquote><p>Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages and runtimes (such as C++, C#, Java, Python, PHP, Go, .NET).</p><p>Visual Studio Code是一个轻量级但功能强大的源代码编辑器，可在桌面上运行，适用于Windows、macOS和Linux。它内置了对JavaScript、TypeScript和Node.js的支持，并具有丰富的其他语言和运行时扩展生态系统（如C++、C#、Java、Python、PHP、Go、.NET）</p></blockquote><p>vs code全称Visual Studio Code，轻量但强大的代码编辑器，能在多系统多平台桌面化使用，支持丰富的编程语言和扩展生态。</p><h2 id="vs-code的优点"><a href="#vs-code的优点" class="headerlink" title="vs code的优点"></a>vs code的优点</h2><ul><li>免费开源。免费开源永远放在第一位，谁不喜欢白嫖</li><li>轻量化。不需要大量下载，内存占用少。</li><li>丰富的插件。通过安装各种插件来打造自己喜欢的编辑器风格和运行多种编程语言。</li></ul><p>就这三点，就足以让你选择它，作为计算机人员，需要学习很多编程语言，像shell、html、sql、c、c++、python、R等等，如果一门语言装一个编辑器，就有十几个，如果还是付费的化，那就更不用多说，而vs code横空出世，拥有不比专用编辑器的代码自动补齐、自动修复等功能，还能集所有语言于一体，只能直呼666。</p><h2 id="vs-code的缺点"><a href="#vs-code的缺点" class="headerlink" title="vs code的缺点"></a>vs code的缺点</h2><p>我个人认为，vs code的最大的缺点就是有时可以正常运行，有时就不行。有时总会出现让人费解的bug，有时又能很好的运行，举两个例子吧。</p><ol><li><p>在vs code运行 python文件时，会出现</p><blockquote><p>SyntaxError: Non-ASCII character ‘xef’ in file</p></blockquote><p> 原因是，代码中有中文注释，而python默认编码格式是UTF-8，需要在代码开头加上</p><blockquote><p> #\ -*- coding: utf-8\ -*</p></blockquote><p> 不过到后面，会发现不加上这一句它又可以运行。</p><p> 在python专用编辑器pycharm就不会出现这种情况。</p></li><li><p>还有就是路径问题，昨天做爬虫scrapy，明明在pycharm中根目录函数调用子目录爬虫是完全没问题的，但是放到vs code中就会这样报错</p><blockquote><p># no active project Unknown command: crawl</p></blockquote><p> 首先我的，scrapy.cfg是肯定有的，所以网上查了其他资料，说是路径问题，没有识别当前的工作路径，于是加上</p> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os,sys<br>dirpath=os.path.dirname(os.path.abspath(__file__))<br><span class="hljs-comment">#运行文件绝对路径</span><br><span class="hljs-comment">#print(os.path.abspath(__file__))</span><br><span class="hljs-comment">#运行文件父路径</span><br><span class="hljs-comment">#print(dirpath)</span><br><span class="hljs-comment"># 添加环境变量</span><br>sys.path.append(dirpath)<br><span class="hljs-comment">#切换工作目录</span><br>os.chdir(dirpath)<br></code></pre></td></tr></table></figure></li></ol><p>当然还有环境变量的配置等等，还是有使用门槛的，不过幸运的是，Mac用户相对就还好，主要是win的配置有些复杂。</p><p>所以vs code也是有缺点的，肯定是没有专用编辑器那么好用，世上并没有十全十美的东西。</p><h2 id="初识vs-code"><a href="#初识vs-code" class="headerlink" title="初识vs code"></a>初识vs code</h2><p>第一遇到vs code是在大学开学，非常幸运，认识一个直系学长（姓于，我称老于，对我刚步入大学倍加关照，万分感谢），刚开学就告诉我们要学c语言，但是用的编辑器是Dev-c++，还有一个什么编辑器忘了，反正更加**，所以他主动提出帮助我们安装vs code和python，不过我的还好，因为Mac从官网下vs code一路无脑next，然后打开即使用，装一些插件就好了，同行的几位win用户要配置环境变量就相对麻烦。</p><p>不过我并没有使用多长时间，因为我后来使用了Xcode，MacOS系统的专属代码编辑器，界面是体验感是真的nice，但是那个包12个G是真的大，而且支持的语言也比较少，还有就是代码更新速度慢、运行速度慢，时不时出点小bug。但是谁让我是果粉呢微笑^_^。</p><p>后面我又把vs code删了，因为莫名其妙的bug让我无法难受，当时学习c++的时候，我决定拿出来使用，但是不知道为什么就突然都运行不了，显示的好像是配置问题。我非常气愤，就一口气直接把它卸载了，用我的学生优惠开始一年免费使用权的clion，也就是说我走的是一门语言一个编辑器的路。</p><p>我是昨天把它下回来的，因为突然看见室友在用vs code，再看见我一电脑的编辑器，我就决定开始折腾一下了，把它打造成最强编辑器，卸掉其他专用编辑器。</p><p>废话不多说，直接开始吧。</p><h2 id="vs-code安装"><a href="#vs-code安装" class="headerlink" title="vs code安装"></a>vs code安装</h2><p>因为我是Mac，所以我的安装都是针对Mac的。</p><p>安装很简单，无脑安装，官网<a href="https://code.visualstudio.com/Download">下载地址</a></p><p>选择适合自己电脑的版本.zip，据说intel和M芯片都分开了，注意安装版本。</p><p>安装后，一般在访达的下载里面，将它拖到应用程序，就可以开始像软件一样打开使用了。</p><p><img src="/images/vscode1" alt="欢迎页"></p><p>开始界面都是英文的，中国人当然使用中国字，我们在插件商店去下载汉化包。</p><p>最左边一栏，从上至下依次是资源管理器（你的文件啥的都在这里），搜索，运行和调试，然后是扩展，打开扩展搜索Chinese点击安装重新启动即可全局设置。</p><p><img src="/images/vscode2" alt="汉化"></p><p>vscode的界面很友好，你把鼠标放在对应的按钮上，它会显示对应的功能名称和快捷键。</p><p>只要使用过编辑器，一些基本功能使用都是没问题。</p><h2 id="C-x2F-C-配置"><a href="#C-x2F-C-配置" class="headerlink" title="C&#x2F;C++配置"></a>C&#x2F;C++配置</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾派</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>爱折腾</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>数列极限1</title>
     <link href="/2023/11/02/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B/%E6%95%B0%E5%88%97%E6%9E%81%E9%99%901/"/>
     <url>/2023/11/02/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B/%E6%95%B0%E5%88%97%E6%9E%81%E9%99%901/</url>
