@@ -16,26 +16,26 @@
   <meta name="author" content="xzy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="刷题、刷题、还是刷题～">
+    <meta name="description" content="网络爬虫从入门到实战">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一元微分">
-<meta property="og:url" content="http://example.com/2023/11/06/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%86/index.html">
+<meta property="og:title" content="动态网页爬取">
+<meta property="og:url" content="http://example.com/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="刷题、刷题、还是刷题～">
+<meta property="og:description" content="网络爬虫从入门到实战">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E6%95%B0%E7%AB%9Elogo.jpg">
-<meta property="article:published_time" content="2023-11-06T15:48:19.710Z">
-<meta property="article:modified_time" content="2023-11-06T15:49:28.910Z">
+<meta property="og:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
+<meta property="article:published_time" content="2023-11-17T06:51:17.400Z">
+<meta property="article:modified_time" content="2023-11-17T08:53:11.194Z">
 <meta property="article:author" content="xzy">
-<meta property="article:tag" content="大学生数学竞赛">
+<meta property="article:tag" content="爬虫学习笔记（基础）">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/%E6%95%B0%E7%AB%9Elogo.jpg">
+<meta name="twitter:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>一元微分 - Hexo</title>
+  <title>动态网页爬取 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -210,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="一元微分"></span>
+            <span id="subtitle" data-typed-text="动态网页爬取"></span>
           
         </div>
 
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-06 23:48" pubdate>
-          2023年11月6日 晚上
+        <time datetime="2023-11-17 14:51" pubdate>
+          2023年11月17日 下午
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          105 字
+          1.7k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          1 分钟
+          14 分钟
         
       </span>
     
@@ -305,18 +305,36 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">一元微分</h1>
+            <h1 style="display: none">动态网页爬取</h1>
             
             <div class="markdown-body">
               
-              <h1 id="一元微分"><a href="#一元微分" class="headerlink" title="一元微分"></a>一元微分</h1><blockquote>
-<p>因为数学公式太多，用电脑敲公式不太方便，所以采用手写上传照片的方式。</p>
-<p>题目都是历年全国大学生数学竞赛（非数学类）真题，适合备考竞赛和考研数一食用。</p>
-<p>那么还在等什么呢，赶紧和我一起练起来吧！^_^</p>
-<p>（字丑勿喷～</p>
-</blockquote>
-<p><img src="/images/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%86.png" srcset="/img/loading.gif" lazyload alt="一元微分1"></p>
-<p><img src="/images/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%862.png" srcset="/img/loading.gif" lazyload alt="一元微分2"></p>
+              <h1 id="Ajax动态网页爬取"><a href="#Ajax动态网页爬取" class="headerlink" title="Ajax动态网页爬取"></a>Ajax动态网页爬取</h1><p>有时候在网页中可以看到网页的内容，但使用requests爬取下来却没有，这是因为requests爬取的只是网页HTML源码，而浏览器我们看到的内容是JavaScript处理数据后生成的数据，网页中的数据有多种来源，可能是Ajax加载的，可能是包含在HTML文档里，可能是javascript和特定算法生成的。</p>
+<p>对于第一种，是原始网页加载完毕后，会再向服务器请求数据，然后经过处理再呈现在网页上，属于动态网页，可以实现页面灵活多变，还可以实现用户登录和注册等功能。</p>
+<p>第二种是直接在HTML文档中，解析即是网页内容，属于静态网页，本站即使静态网页，静态网页加载速度快、编写简单，同时也存在着很大的缺陷，如可维护性差、不能根据URL灵活多变的显示内容等。</p>
+<p>第三种类似pyecharts的可视化作图，在数据可视化课程设计大即是美中，使用page生成大屏图，最后的网页结果即是。</p>
+<h2 id="什么是Ajax"><a href="#什么是Ajax" class="headerlink" title="什么是Ajax"></a>什么是Ajax</h2><p>全称Asynchronous JavaScript and XML，即异步的JavaScript和HTML，利用JavaScript在保证页面不刷新、页面链接不被改变的情况下与服务器交换数据并更换网页内容的方法。</p>
+<p>对于传统网页，如果想更新网页内容，就必须刷新整个网页，但有了Ajax网页不被刷新就能获取新的内容。</p>
+<h2 id="查看Ajax请求"><a href="#查看Ajax请求" class="headerlink" title="查看Ajax请求"></a>查看Ajax请求</h2><p>网页HTML源码中不包含我们想要的数据，我们需要捕获Ajax请求才能从中爬取我们想要的信息，在哪儿查看Ajax请求？</p>
+<p><img src="/images/Ajax%E8%AF%B7%E6%B1%82.png" srcset="/img/loading.gif" lazyload alt="Ajax请求"></p>
+<p><strong>开发者工具—Network—preserve log—Fetch&#x2F;XHR</strong></p>
+<p>Network可以监听所有浏览器与服务器之间发送请求和接受响应的所有记录。</p>
+<p>preserve log 可以保留所有日志。</p>
+<p>Ajax有特殊的请求类型叫做XHR，一种不借助刷新网页即可传输数据的对象</p>
+<p>Fetch是一种http数据请求方式，是XHR的一种替代方案，比Ajax更简单。</p>
+<p>点击Fetch&#x2F;XHR可以筛选出所有的Ajax请求。</p>
+<p>随机点击其中一个Ajax请求，都可以清楚的看到requests url、requests header和response headers、response body等内容。</p>
+<p>单击preview选项，可以看见响应的内容，内容都是json格式，只是浏览器帮助我们解析过。我们需要爬取的信息就在里面</p>
+<h2 id="json格式数据爬取"><a href="#json格式数据爬取" class="headerlink" title="json格式数据爬取"></a>json格式数据爬取</h2><p>json格式数据由字典列表嵌套，它的组成包含花括号、方括号、冒号和逗号，至于XHR为什么传输json格式响应数据，是因为对于数据量的字符串，json是一种良好的信息存储方式，我们使用requests库的json解码器爬取信息。</p>
+<p><strong>URL—requests.get()—response对象—response.json()—字典&#x2F;列表</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br>url = <span class="hljs-string">&#x27;http://balabal.com&#x27;</span><br>headers = &#123;<br>  <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;balabalaba&#x27;</span><br>&#125;<br><br>req = requests.get(url,headers = headers)<br><br><span class="hljs-comment"># 使用json方法，将reponse转换成字典列表</span><br>music_json = req.json()<br></code></pre></td></tr></table></figure>
+
+<p>preview中观察数据格式：</p>
+<p><img src="/images/json%E6%95%B0%E6%8D%AE.png" srcset="/img/loading.gif" lazyload alt="json数据"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#根据对应的键，一层一层的取值，一直取到需要的信息所在的共同层，最终是个列表</span><br>music_list = music_json[<span class="hljs-string">&#x27;data&#x27;</span>][<span class="hljs-string">&#x27;list&#x27;</span>]<br><span class="hljs-comment">#遍历列表取值，里面的0，1，2不是键，它们只是列表中元素的编号</span><br><span class="hljs-comment">#列表中的元素又是字典</span><br><span class="hljs-keyword">for</span> music <span class="hljs-keyword">in</span> music_list:<br>	music_album = music[<span class="hljs-string">&#x27;album&#x27;</span>]<br>  music_name = music[<span class="hljs-string">&#x27;name&#x27;</span>]<br>  <span class="hljs-built_in">print</span>(music_album,<span class="hljs-string">&#x27;\n&#x27;</span>,music_name)<br>  <br></code></pre></td></tr></table></figure>
+
+
+
 
               
             </div>
@@ -349,7 +367,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B/">#大学生数学竞赛</a>
+        <a href="/tags/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/">#爬虫学习笔记（基础）</a>
       
     </div>
   
@@ -363,9 +381,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/" title="动态网页爬取">
+                      <a href="/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%B8%A6%E5%8F%82%E6%95%B0%E8%AF%B7%E6%B1%82&amp;Excel%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" title="带参数请求&amp;Excel文件操作">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">动态网页爬取</span>
+                        <span class="hidden-mobile">带参数请求&amp;Excel文件操作</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -373,8 +391,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/06/%E6%8A%98%E8%85%BE%E6%B4%BE/%E6%89%93%E9%80%A0vs%20code%E6%9C%80%E5%BC%BA%E7%BC%96%E8%BE%91%E5%99%A8/" title="【Mac】打造vs code最强编辑器">
-                        <span class="hidden-mobile">【Mac】打造vs code最强编辑器</span>
+                      <a href="/2023/11/06/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%86/" title="一元微分">
+                        <span class="hidden-mobile">一元微分</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

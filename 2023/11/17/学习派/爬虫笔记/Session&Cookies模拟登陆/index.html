@@ -16,26 +16,26 @@
   <meta name="author" content="xzy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="刷题、刷题、还是刷题～">
+    <meta name="description" content="网络爬虫从入门到实战">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一元微分">
-<meta property="og:url" content="http://example.com/2023/11/06/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%86/index.html">
+<meta property="og:title" content="基于Session和Cookies模拟登陆">
+<meta property="og:url" content="http://example.com/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/Session&Cookies%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="刷题、刷题、还是刷题～">
+<meta property="og:description" content="网络爬虫从入门到实战">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E6%95%B0%E7%AB%9Elogo.jpg">
-<meta property="article:published_time" content="2023-11-06T15:48:19.710Z">
-<meta property="article:modified_time" content="2023-11-06T15:49:28.910Z">
+<meta property="og:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
+<meta property="article:published_time" content="2023-11-17T08:26:50.656Z">
+<meta property="article:modified_time" content="2023-11-17T09:23:17.757Z">
 <meta property="article:author" content="xzy">
-<meta property="article:tag" content="大学生数学竞赛">
+<meta property="article:tag" content="爬虫学习笔记（基础）">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/%E6%95%B0%E7%AB%9Elogo.jpg">
+<meta name="twitter:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>一元微分 - Hexo</title>
+  <title>基于Session和Cookies模拟登陆 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -210,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="一元微分"></span>
+            <span id="subtitle" data-typed-text="基于Session和Cookies模拟登陆"></span>
           
         </div>
 
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-06 23:48" pubdate>
-          2023年11月6日 晚上
+        <time datetime="2023-11-17 16:26" pubdate>
+          2023年11月17日 下午
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          105 字
+          1.8k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          1 分钟
+          15 分钟
         
       </span>
     
@@ -305,18 +305,28 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">一元微分</h1>
+            <h1 style="display: none">基于Session和Cookies模拟登陆</h1>
             
             <div class="markdown-body">
               
-              <h1 id="一元微分"><a href="#一元微分" class="headerlink" title="一元微分"></a>一元微分</h1><blockquote>
-<p>因为数学公式太多，用电脑敲公式不太方便，所以采用手写上传照片的方式。</p>
-<p>题目都是历年全国大学生数学竞赛（非数学类）真题，适合备考竞赛和考研数一食用。</p>
-<p>那么还在等什么呢，赶紧和我一起练起来吧！^_^</p>
-<p>（字丑勿喷～</p>
-</blockquote>
-<p><img src="/images/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%86.png" srcset="/img/loading.gif" lazyload alt="一元微分1"></p>
-<p><img src="/images/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%862.png" srcset="/img/loading.gif" lazyload alt="一元微分2"></p>
+              <h1 id="Session-amp-Cookies模拟登陆"><a href="#Session-amp-Cookies模拟登陆" class="headerlink" title="Session&amp;Cookies模拟登陆"></a>Session&amp;Cookies模拟登陆</h1><p>有的网站一般需要登陆才可以访问，登陆之后还可以连续访问很多页面，但是有时过一段时间后又需要重新登陆。还有一些网站打开浏览器就可以自动登录，而且很久都不会失效，其实是Cookies和Session的作用</p>
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><p>Session对象用来存储特定用户Session所需的属性及配置信息，这样用户在页面见跳转，Session对象中的信息不会丢失，会一直存储下去，如果用户没有Session，在网页请求时web服务器会自动分配一个Session，当Session到期或者废弃时，服务器会终止该Session。</p>
+<h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p>指某些网站为了鉴别用户信息、进行Session跟踪而存储在用户本地终端上的数据。</p>
+<p>当客户端第一次发出请求时，服务器会返回一个Cookies，用来标记这个用户，客户端浏览器会把它保存下来，当下次发出同样请求时，会把Cookies带上一起提交给服务器，这样就可以让浏览器知道我的身份，不需要反复登录就能查看网页。</p>
+<h2 id="Session和Cookies的关系"><a href="#Session和Cookies的关系" class="headerlink" title="Session和Cookies的关系"></a>Session和Cookies的关系</h2><p>Session在服务端，也就是网站的服务器，用来存储用户的Session信息；</p>
+<p>Cookies在客户端，也就是浏览器端，发出请求时带上Cookies让服务器识别。</p>
+<p>可以这样理解，Cookies就是校园卡，我们自己拿在手里，卡里存储了我们自己的信息，Session就是学校记录我们信息的数据库，当我们去刷校园卡时，系统识别我们卡里的信息，然后在自己的数据库找到对应匹配的信息，这样就能识别我们是谁。</p>
+<p>Cookies里面包含了Session ID信息，方便服务器端进行Session匹配。</p>
+<h2 id="模拟登陆"><a href="#模拟登陆" class="headerlink" title="模拟登陆"></a>模拟登陆</h2><p>我们可以手动在浏览器输入用户名和密码，再把生成的Cookies复制到代码中请求数据，但是这样显然不够优雅，爬虫主打的就是一个自动化，这样显然有人工成本。</p>
+<p>其实登录过程就是一个post请求，用爬虫把用户名和密码等信息交给服务器，然后从response里面提取Cookies继续使用。也有更简单的方式，使用selenium模仿人进行自动化操作，后面会实现。</p>
+<p>废话不多说，直接开始造</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>login_url = <span class="hljs-string">&#x27;http://balabla.com/login&#x27;</span><br>index_url = <span class="hljs-string">&#x27;http://balabla.com/page/1&#x27;</span><br><span class="hljs-comment">#需要提交的用户名和密码登录信息</span><br>data = &#123;<br>  <span class="hljs-string">&#x27;username&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span><br>  <span class="hljs-string">&#x27;passward&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span><br>&#125;<br><span class="hljs-comment"># 由于requests具有自动处理重定向的能力，所以我们要设置false</span><br>res = requests.post(login_url,data = data,allow_redirects=<span class="hljs-literal">False</span>)<br><span class="hljs-comment"># 获取Cookies</span><br>cookies = res.cookies<br><br><span class="hljs-comment"># 请求网页时带上Cookies</span><br>r = resquests.get(index_url,cookies = cookies)<br><span class="hljs-comment"># r就是我们想要页面的response</span><br><br></code></pre></td></tr></table></figure>
+
+<p>可是这样还是不够优雅，每次请求时都要处理并传递一次cookies，我们可以借助requests库的Session对象自动处理Cookies，使用Session对象后，requests会自动保存每次请求后设置的cookies，并在下次请求时带上它。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>login_url = <span class="hljs-string">&#x27;http://balabla.com/login&#x27;</span><br>index_url = <span class="hljs-string">&#x27;http://balabla.com/page/1&#x27;</span><br><span class="hljs-comment">#需要提交的用户名和密码登录信息</span><br>data = &#123;<br>  <span class="hljs-string">&#x27;username&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span><br>  <span class="hljs-string">&#x27;passward&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span><br>&#125;<br>session = requests.Session()<br>res = session(login_url,data = data)<br>r = session.get(index_url)<br><br></code></pre></td></tr></table></figure>
+
+
+
 
               
             </div>
@@ -349,7 +359,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B/">#大学生数学竞赛</a>
+        <a href="/tags/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/">#爬虫学习笔记（基础）</a>
       
     </div>
   
@@ -363,9 +373,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/" title="动态网页爬取">
+                      <a href="/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%BC%82%E6%AD%A5%E7%88%AC%E8%99%AB/" title="异步爬虫">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">动态网页爬取</span>
+                        <span class="hidden-mobile">异步爬虫</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -373,8 +383,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/06/%E6%8A%98%E8%85%BE%E6%B4%BE/%E6%89%93%E9%80%A0vs%20code%E6%9C%80%E5%BC%BA%E7%BC%96%E8%BE%91%E5%99%A8/" title="【Mac】打造vs code最强编辑器">
-                        <span class="hidden-mobile">【Mac】打造vs code最强编辑器</span>
+                      <a href="/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%B8%A6%E5%8F%82%E6%95%B0%E8%AF%B7%E6%B1%82&amp;Excel%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" title="带参数请求&amp;Excel文件操作">
+                        <span class="hidden-mobile">带参数请求&amp;Excel文件操作</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

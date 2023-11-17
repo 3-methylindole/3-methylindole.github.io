@@ -16,26 +16,26 @@
   <meta name="author" content="xzy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="刷题、刷题、还是刷题～">
+    <meta name="description" content="网络爬虫从入门到实战">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一元微分">
-<meta property="og:url" content="http://example.com/2023/11/06/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%86/index.html">
+<meta property="og:title" content="异步爬虫">
+<meta property="og:url" content="http://example.com/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%BC%82%E6%AD%A5%E7%88%AC%E8%99%AB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="刷题、刷题、还是刷题～">
+<meta property="og:description" content="网络爬虫从入门到实战">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E6%95%B0%E7%AB%9Elogo.jpg">
-<meta property="article:published_time" content="2023-11-06T15:48:19.710Z">
-<meta property="article:modified_time" content="2023-11-06T15:49:28.910Z">
+<meta property="og:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
+<meta property="article:published_time" content="2023-11-17T09:32:24.375Z">
+<meta property="article:modified_time" content="2023-11-17T09:57:51.240Z">
 <meta property="article:author" content="xzy">
-<meta property="article:tag" content="大学生数学竞赛">
+<meta property="article:tag" content="爬虫学习笔记（基础）">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/%E6%95%B0%E7%AB%9Elogo.jpg">
+<meta name="twitter:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>一元微分 - Hexo</title>
+  <title>异步爬虫 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -210,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="一元微分"></span>
+            <span id="subtitle" data-typed-text="异步爬虫"></span>
           
         </div>
 
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-06 23:48" pubdate>
-          2023年11月6日 晚上
+        <time datetime="2023-11-17 17:32" pubdate>
+          2023年11月17日 下午
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          105 字
+          397 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -305,19 +305,20 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">一元微分</h1>
+            <h1 style="display: none">异步爬虫</h1>
             
             <div class="markdown-body">
               
-              <h1 id="一元微分"><a href="#一元微分" class="headerlink" title="一元微分"></a>一元微分</h1><blockquote>
-<p>因为数学公式太多，用电脑敲公式不太方便，所以采用手写上传照片的方式。</p>
-<p>题目都是历年全国大学生数学竞赛（非数学类）真题，适合备考竞赛和考研数一食用。</p>
-<p>那么还在等什么呢，赶紧和我一起练起来吧！^_^</p>
-<p>（字丑勿喷～</p>
-</blockquote>
-<p><img src="/images/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%86.png" srcset="/img/loading.gif" lazyload alt="一元微分1"></p>
-<p><img src="/images/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%862.png" srcset="/img/loading.gif" lazyload alt="一元微分2"></p>
-
+              <h1 id="异步爬虫"><a href="#异步爬虫" class="headerlink" title="异步爬虫"></a>异步爬虫</h1><p>使用requests来爬取某个站点，当发出一个请求后，程序必须等待网站返回响应，才能接着运行，而这些等待过程，爬虫没有做任何事情，对于这种情况，可以使用协程进行优化，提高爬虫的爬取效率</p>
+<h2 id="协程原理"><a href="#协程原理" class="headerlink" title="协程原理"></a>协程原理</h2><ul>
+<li>阻塞：指程序未得到所需的计算资源时被挂起的状态，在等待某个操作完成期间，自身无法继续干别的事情。</li>
+<li>非阻赛：在等待过程中，可以继续干别的事情。</li>
+<li>同步：不同程序单元为了共同完成一个任务，在执行过程中保持协调一致。例如1000个任务只有一条生产线，需要排队执行1000次。</li>
+<li>异步：不同程序单元之间无需协调也能完成任务。例如1000个任务可以有1000条生产线</li>
+<li>多进程：利用CPU多核优势，在同一时间并行执行多个任务，可以大大提高效率。</li>
+<li>协程：协程本质上是一个单线程，但可以通过它实现异步操作，例如爬虫在等待时间中可以干其他许多事情，等到响应之后再换回来继续处理，充分利用CPU资源。</li>
+</ul>
+<h2 id="gevent-Queue协程"><a href="#gevent-Queue协程" class="headerlink" title="gevent-Queue协程"></a>gevent-Queue协程</h2>
               
             </div>
             <hr/>
@@ -349,7 +350,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B/">#大学生数学竞赛</a>
+        <a href="/tags/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/">#爬虫学习笔记（基础）</a>
       
     </div>
   
@@ -363,18 +364,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/" title="动态网页爬取">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">动态网页爬取</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/06/%E6%8A%98%E8%85%BE%E6%B4%BE/%E6%89%93%E9%80%A0vs%20code%E6%9C%80%E5%BC%BA%E7%BC%96%E8%BE%91%E5%99%A8/" title="【Mac】打造vs code最强编辑器">
-                        <span class="hidden-mobile">【Mac】打造vs code最强编辑器</span>
+                      <a href="/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/Session&amp;Cookies%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86/" title="基于Session和Cookies模拟登陆">
+                        <span class="hidden-mobile">基于Session和Cookies模拟登陆</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

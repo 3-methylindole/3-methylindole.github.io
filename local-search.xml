@@ -4,6 +4,106 @@
   
   
   <entry>
+    <title>异步爬虫</title>
+    <link href="/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%BC%82%E6%AD%A5%E7%88%AC%E8%99%AB/"/>
+    <url>/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%BC%82%E6%AD%A5%E7%88%AC%E8%99%AB/</url>
+    
+    <content type="html"><![CDATA[<h1 id="异步爬虫"><a href="#异步爬虫" class="headerlink" title="异步爬虫"></a>异步爬虫</h1><p>使用requests来爬取某个站点，当发出一个请求后，程序必须等待网站返回响应，才能接着运行，而这些等待过程，爬虫没有做任何事情，对于这种情况，可以使用协程进行优化，提高爬虫的爬取效率</p><h2 id="协程原理"><a href="#协程原理" class="headerlink" title="协程原理"></a>协程原理</h2><ul><li>阻塞：指程序未得到所需的计算资源时被挂起的状态，在等待某个操作完成期间，自身无法继续干别的事情。</li><li>非阻赛：在等待过程中，可以继续干别的事情。</li><li>同步：不同程序单元为了共同完成一个任务，在执行过程中保持协调一致。例如1000个任务只有一条生产线，需要排队执行1000次。</li><li>异步：不同程序单元之间无需协调也能完成任务。例如1000个任务可以有1000条生产线</li><li>多进程：利用CPU多核优势，在同一时间并行执行多个任务，可以大大提高效率。</li><li>协程：协程本质上是一个单线程，但可以通过它实现异步操作，例如爬虫在等待时间中可以干其他许多事情，等到响应之后再换回来继续处理，充分利用CPU资源。</li></ul><h2 id="gevent-Queue协程"><a href="#gevent-Queue协程" class="headerlink" title="gevent-Queue协程"></a>gevent-Queue协程</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习派</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>爬虫学习笔记（基础）</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>基于Session和Cookies模拟登陆</title>
+    <link href="/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/Session&amp;Cookies%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86/"/>
+    <url>/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/Session&amp;Cookies%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Session-amp-Cookies模拟登陆"><a href="#Session-amp-Cookies模拟登陆" class="headerlink" title="Session&amp;Cookies模拟登陆"></a>Session&amp;Cookies模拟登陆</h1><p>有的网站一般需要登陆才可以访问，登陆之后还可以连续访问很多页面，但是有时过一段时间后又需要重新登陆。还有一些网站打开浏览器就可以自动登录，而且很久都不会失效，其实是Cookies和Session的作用</p><h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><p>Session对象用来存储特定用户Session所需的属性及配置信息，这样用户在页面见跳转，Session对象中的信息不会丢失，会一直存储下去，如果用户没有Session，在网页请求时web服务器会自动分配一个Session，当Session到期或者废弃时，服务器会终止该Session。</p><h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p>指某些网站为了鉴别用户信息、进行Session跟踪而存储在用户本地终端上的数据。</p><p>当客户端第一次发出请求时，服务器会返回一个Cookies，用来标记这个用户，客户端浏览器会把它保存下来，当下次发出同样请求时，会把Cookies带上一起提交给服务器，这样就可以让浏览器知道我的身份，不需要反复登录就能查看网页。</p><h2 id="Session和Cookies的关系"><a href="#Session和Cookies的关系" class="headerlink" title="Session和Cookies的关系"></a>Session和Cookies的关系</h2><p>Session在服务端，也就是网站的服务器，用来存储用户的Session信息；</p><p>Cookies在客户端，也就是浏览器端，发出请求时带上Cookies让服务器识别。</p><p>可以这样理解，Cookies就是校园卡，我们自己拿在手里，卡里存储了我们自己的信息，Session就是学校记录我们信息的数据库，当我们去刷校园卡时，系统识别我们卡里的信息，然后在自己的数据库找到对应匹配的信息，这样就能识别我们是谁。</p><p>Cookies里面包含了Session ID信息，方便服务器端进行Session匹配。</p><h2 id="模拟登陆"><a href="#模拟登陆" class="headerlink" title="模拟登陆"></a>模拟登陆</h2><p>我们可以手动在浏览器输入用户名和密码，再把生成的Cookies复制到代码中请求数据，但是这样显然不够优雅，爬虫主打的就是一个自动化，这样显然有人工成本。</p><p>其实登录过程就是一个post请求，用爬虫把用户名和密码等信息交给服务器，然后从response里面提取Cookies继续使用。也有更简单的方式，使用selenium模仿人进行自动化操作，后面会实现。</p><p>废话不多说，直接开始造</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>login_url = <span class="hljs-string">&#x27;http://balabla.com/login&#x27;</span><br>index_url = <span class="hljs-string">&#x27;http://balabla.com/page/1&#x27;</span><br><span class="hljs-comment">#需要提交的用户名和密码登录信息</span><br>data = &#123;<br>  <span class="hljs-string">&#x27;username&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span><br>  <span class="hljs-string">&#x27;passward&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span><br>&#125;<br><span class="hljs-comment"># 由于requests具有自动处理重定向的能力，所以我们要设置false</span><br>res = requests.post(login_url,data = data,allow_redirects=<span class="hljs-literal">False</span>)<br><span class="hljs-comment"># 获取Cookies</span><br>cookies = res.cookies<br><br><span class="hljs-comment"># 请求网页时带上Cookies</span><br>r = resquests.get(index_url,cookies = cookies)<br><span class="hljs-comment"># r就是我们想要页面的response</span><br><br></code></pre></td></tr></table></figure><p>可是这样还是不够优雅，每次请求时都要处理并传递一次cookies，我们可以借助requests库的Session对象自动处理Cookies，使用Session对象后，requests会自动保存每次请求后设置的cookies，并在下次请求时带上它。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>login_url = <span class="hljs-string">&#x27;http://balabla.com/login&#x27;</span><br>index_url = <span class="hljs-string">&#x27;http://balabla.com/page/1&#x27;</span><br><span class="hljs-comment">#需要提交的用户名和密码登录信息</span><br>data = &#123;<br>  <span class="hljs-string">&#x27;username&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span><br>  <span class="hljs-string">&#x27;passward&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span><br>&#125;<br>session = requests.Session()<br>res = session(login_url,data = data)<br>r = session.get(index_url)<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习派</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>爬虫学习笔记（基础）</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>带参数请求&amp;Excel文件操作</title>
+    <link href="/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%B8%A6%E5%8F%82%E6%95%B0%E8%AF%B7%E6%B1%82&amp;Excel%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
+    <url>/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%B8%A6%E5%8F%82%E6%95%B0%E8%AF%B7%E6%B1%82&amp;Excel%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
+    
+    <content type="html"><![CDATA[<h1 id="带参数请求"><a href="#带参数请求" class="headerlink" title="带参数请求"></a>带参数请求</h1><p>让我们再回到requests的使用，对于Get请求，如果要附加额外的信息，一般会怎样添加呢？例如我想在一个URL中添加两个参数name&#x3D;germey和age&#x3D;25，于是我们将url改为：</p><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">http:</span>//www.httpbin<span class="hljs-meta">.org</span>/get?name=germy&amp;age=<span class="hljs-number">25</span><br></code></pre></td></tr></table></figure><p>然后再使用requests.get()发出请求获得响应。</p><p>这样也可以，但是是不是有点不人性化，参数还需要我们手动连接，实在不优雅。</p><h2 id="params带参数请求"><a href="#params带参数请求" class="headerlink" title="params带参数请求"></a>params带参数请求</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&#x27;http://balabla.com&#x27;</span><br>data = &#123;<br>  <span class="hljs-string">&#x27;name&#x27;</span>:<span class="hljs-string">&#x27;germy&#x27;</span>,<br>  <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-number">25</span><br>&#125;<br><br>r = requests.get(url,params = data)<br></code></pre></td></tr></table></figure><p>上面把URL参数以字典的形式传给get方法的params方法，请求的链接最后会被自动构造。</p><h1 id="Excel文件操作"><a href="#Excel文件操作" class="headerlink" title="Excel文件操作"></a>Excel文件操作</h1><p>信息爬取下来后，总得找个地方把它存储下来吧，这里我们选择将数据存到Excel中，当然还可以存储到csv、txt、数据库等，根据数据的格式、大小选择不同的存储方式。我们使用openpyxl将爬取到的信息存储到Excel文件中。</p><h2 id="openpyxl-存储数据"><a href="#openpyxl-存储数据" class="headerlink" title="openpyxl 存储数据"></a>openpyxl 存储数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> openpyxl<br><br><span class="hljs-comment">#创建工作簿</span><br>wb = openpyxl.Workbook()<br><span class="hljs-comment">#获取工作表</span><br>sheet = wb.active<br><span class="hljs-comment">#工作表重命名</span><br>sheet.title = <span class="hljs-string">&#x27;music&#x27;</span><br><span class="hljs-comment">#信息条目赋值给表头</span><br>sheet[<span class="hljs-string">&#x27;A1&#x27;</span>] = <span class="hljs-string">&#x27;歌曲名&#x27;</span><br>sheet[<span class="hljs-string">&#x27;B1&#x27;</span>] = <span class="hljs-string">&#x27;专辑&#x27;</span><br>sheet[<span class="hljs-string">&#x27;C1&#x27;</span>] = <span class="hljs-string">&#x27;播放时长&#x27;</span><br></code></pre></td></tr></table></figure><p>接上回json动态网页爬取</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> music <span class="hljs-keyword">in</span> music_list:<br>music_album = music[<span class="hljs-string">&#x27;album&#x27;</span>]<br>  music_name = music[<span class="hljs-string">&#x27;name&#x27;</span>]<br>  sheet.append([music_name,music_album])<span class="hljs-comment">#按行依次添加列表</span><br>  <br><span class="hljs-comment"># 最好别忘记保存了哦</span><br><span class="hljs-comment"># 给工作薄取个名字</span><br>wb.save(<span class="hljs-string">&#x27;歌曲.xlsx&#x27;</span>)<br></code></pre></td></tr></table></figure><p>如何读取Excel中的信息？</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">wb2 = openpyxl.load_workbook(<span class="hljs-string">&#x27;歌曲.xlsx&#x27;</span>)<br>sheet = wb2[<span class="hljs-string">&#x27;music&#x27;</span>]<br>A1_cell = sheet[<span class="hljs-string">&#x27;A1&#x27;</span>]<br>A1_value = A1_cell.value<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习派</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>爬虫学习笔记（基础）</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>动态网页爬取</title>
+    <link href="/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/"/>
+    <url>/2023/11/17/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Ajax动态网页爬取"><a href="#Ajax动态网页爬取" class="headerlink" title="Ajax动态网页爬取"></a>Ajax动态网页爬取</h1><p>有时候在网页中可以看到网页的内容，但使用requests爬取下来却没有，这是因为requests爬取的只是网页HTML源码，而浏览器我们看到的内容是JavaScript处理数据后生成的数据，网页中的数据有多种来源，可能是Ajax加载的，可能是包含在HTML文档里，可能是javascript和特定算法生成的。</p><p>对于第一种，是原始网页加载完毕后，会再向服务器请求数据，然后经过处理再呈现在网页上，属于动态网页，可以实现页面灵活多变，还可以实现用户登录和注册等功能。</p><p>第二种是直接在HTML文档中，解析即是网页内容，属于静态网页，本站即使静态网页，静态网页加载速度快、编写简单，同时也存在着很大的缺陷，如可维护性差、不能根据URL灵活多变的显示内容等。</p><p>第三种类似pyecharts的可视化作图，在数据可视化课程设计大即是美中，使用page生成大屏图，最后的网页结果即是。</p><h2 id="什么是Ajax"><a href="#什么是Ajax" class="headerlink" title="什么是Ajax"></a>什么是Ajax</h2><p>全称Asynchronous JavaScript and XML，即异步的JavaScript和HTML，利用JavaScript在保证页面不刷新、页面链接不被改变的情况下与服务器交换数据并更换网页内容的方法。</p><p>对于传统网页，如果想更新网页内容，就必须刷新整个网页，但有了Ajax网页不被刷新就能获取新的内容。</p><h2 id="查看Ajax请求"><a href="#查看Ajax请求" class="headerlink" title="查看Ajax请求"></a>查看Ajax请求</h2><p>网页HTML源码中不包含我们想要的数据，我们需要捕获Ajax请求才能从中爬取我们想要的信息，在哪儿查看Ajax请求？</p><p><img src="/images/Ajax%E8%AF%B7%E6%B1%82.png" alt="Ajax请求"></p><p><strong>开发者工具—Network—preserve log—Fetch&#x2F;XHR</strong></p><p>Network可以监听所有浏览器与服务器之间发送请求和接受响应的所有记录。</p><p>preserve log 可以保留所有日志。</p><p>Ajax有特殊的请求类型叫做XHR，一种不借助刷新网页即可传输数据的对象</p><p>Fetch是一种http数据请求方式，是XHR的一种替代方案，比Ajax更简单。</p><p>点击Fetch&#x2F;XHR可以筛选出所有的Ajax请求。</p><p>随机点击其中一个Ajax请求，都可以清楚的看到requests url、requests header和response headers、response body等内容。</p><p>单击preview选项，可以看见响应的内容，内容都是json格式，只是浏览器帮助我们解析过。我们需要爬取的信息就在里面</p><h2 id="json格式数据爬取"><a href="#json格式数据爬取" class="headerlink" title="json格式数据爬取"></a>json格式数据爬取</h2><p>json格式数据由字典列表嵌套，它的组成包含花括号、方括号、冒号和逗号，至于XHR为什么传输json格式响应数据，是因为对于数据量的字符串，json是一种良好的信息存储方式，我们使用requests库的json解码器爬取信息。</p><p><strong>URL—requests.get()—response对象—response.json()—字典&#x2F;列表</strong></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br>url = <span class="hljs-string">&#x27;http://balabal.com&#x27;</span><br>headers = &#123;<br>  <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;balabalaba&#x27;</span><br>&#125;<br><br>req = requests.get(url,headers = headers)<br><br><span class="hljs-comment"># 使用json方法，将reponse转换成字典列表</span><br>music_json = req.json()<br></code></pre></td></tr></table></figure><p>preview中观察数据格式：</p><p><img src="/images/json%E6%95%B0%E6%8D%AE.png" alt="json数据"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#根据对应的键，一层一层的取值，一直取到需要的信息所在的共同层，最终是个列表</span><br>music_list = music_json[<span class="hljs-string">&#x27;data&#x27;</span>][<span class="hljs-string">&#x27;list&#x27;</span>]<br><span class="hljs-comment">#遍历列表取值，里面的0，1，2不是键，它们只是列表中元素的编号</span><br><span class="hljs-comment">#列表中的元素又是字典</span><br><span class="hljs-keyword">for</span> music <span class="hljs-keyword">in</span> music_list:<br>music_album = music[<span class="hljs-string">&#x27;album&#x27;</span>]<br>  music_name = music[<span class="hljs-string">&#x27;name&#x27;</span>]<br>  <span class="hljs-built_in">print</span>(music_album,<span class="hljs-string">&#x27;\n&#x27;</span>,music_name)<br>  <br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习派</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>爬虫学习笔记（基础）</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>一元微分</title>
     <link href="/2023/11/06/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%86/"/>
     <url>/2023/11/06/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B/%E4%B8%80%E5%85%83%E5%BE%AE%E5%88%86/</url>
