@@ -16,26 +16,26 @@
   <meta name="author" content="xzy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基于北京大学数学科学学院R语言教案学习">
+    <meta name="description" content="网络爬虫从入门到实战">
 <meta property="og:type" content="article">
-<meta property="og:title" content="向量下标及子集">
-<meta property="og:url" content="http://example.com/2023/10/30/%E5%AD%A6%E4%B9%A0%E6%B4%BE/R%E7%AC%94%E8%AE%B0/%E5%90%91%E9%87%8F%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%AD%90%E9%9B%86/index.html">
+<meta property="og:title" content="实战2 基于动态网页的爬虫实战">
+<meta property="og:url" content="http://example.com/2023/11/18/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%AE%9E%E6%88%982%20%E7%88%AC%E5%8F%96%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%20/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基于北京大学数学科学学院R语言教案学习">
+<meta property="og:description" content="网络爬虫从入门到实战">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/R%E8%AF%AD%E8%A8%80logo.jpg">
-<meta property="article:published_time" content="2023-10-30T09:00:13.889Z">
-<meta property="article:modified_time" content="2023-10-30T09:12:29.193Z">
+<meta property="og:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
+<meta property="article:published_time" content="2023-11-18T04:23:35.337Z">
+<meta property="article:modified_time" content="2023-11-18T07:19:41.099Z">
 <meta property="article:author" content="xzy">
-<meta property="article:tag" content="R学习笔记（基础）">
+<meta property="article:tag" content="爬虫学习笔记（基础）">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/R%E8%AF%AD%E8%A8%80logo.jpg">
+<meta name="twitter:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>向量下标及子集 - Hexo</title>
+  <title>实战2 基于动态网页的爬虫实战 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -210,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="向量下标及子集"></span>
+            <span id="subtitle" data-typed-text="实战2 基于动态网页的爬虫实战"></span>
           
         </div>
 
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-30 17:00" pubdate>
-          2023年10月30日 下午
+        <time datetime="2023-11-18 12:23" pubdate>
+          2023年11月18日 中午
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          846 字
+          1.8k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          8 分钟
+          15 分钟
         
       </span>
     
@@ -305,35 +305,23 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">向量下标及子集</h1>
+            <h1 style="display: none">实战2 基于动态网页的爬虫实战</h1>
             
             <div class="markdown-body">
               
-              <h2 id="向量下标及子集"><a href="#向量下标及子集" class="headerlink" title="向量下标及子集"></a>向量下标及子集</h2><p>对于向量x，在后面加方括号和下标可以访问向量元素和子集</p>
-<p>x[2]表示取出第二个元素，x[c(1,3)]表示取出第一个和第三号元素。</p>
-<p><strong>负下标表示删除对应正下标元素</strong></p>
-<p>例如x[-2]表示删除第二个元素</p>
-<p><strong>x[]表示取全部元素作为子集，与x本身不同</strong></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs R">x <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">4</span><span class="hljs-punctuation">,</span><span class="hljs-number">6.25</span><span class="hljs-punctuation">)</span><br>x<span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-number">999</span><br>x<br><span class="hljs-comment">## [1] 999 999 999</span><br>x <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">4</span><span class="hljs-punctuation">,</span><span class="hljs-number">6.25</span><span class="hljs-punctuation">)</span> x <span class="hljs-operator">&lt;-</span> 999<br>x<br><span class="hljs-comment">## [1] 999</span><br></code></pre></td></tr></table></figure>
+              <h1 id="爬取动态网页"><a href="#爬取动态网页" class="headerlink" title="爬取动态网页"></a>爬取动态网页</h1><h2 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h2><p>在<a target="_blank" rel="noopener" href="https://spa1.scrapy.center/">https://spa1.scrapy.center/</a> ,利用requests.json()爬取前三页包括电影的名称、类别、上映日期、评分、剧情简介等信息，并保存到Excel中。</p>
+<h2 id="使用的python库"><a href="#使用的python库" class="headerlink" title="使用的python库"></a>使用的python库</h2><p>requests，openpyxl</p>
+<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h4 id="步骤1-查看网页结构"><a href="#步骤1-查看网页结构" class="headerlink" title="步骤1 查看网页结构"></a><strong>步骤1 查看网页结构</strong></h4><p><strong>发现我们需要的内容不在html源码中，打开network，发现内容在XHR中，判断网页为动态网页。</strong></p>
+<p><img src="/images/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%AE%9E%E6%88%98.png" srcset="/img/loading.gif" lazyload alt="动态网页实战"></p>
+<h4 id="步骤二-观察页面链接"><a href="#步骤二-观察页面链接" class="headerlink" title="步骤二 观察页面链接"></a>步骤二 观察页面链接</h4><p>依次点击每页的页码，发现不同的页码在Ajax请求中存在规律，每页的链接规律为：</p>
+<p><strong><a target="_blank" rel="noopener" href="https://spa1.scrape.center/api/movie/?limit=10&amp;offset=%7B%7D">https://spa1.scrape.center/api/movie/?limit=10&amp;offset={}</a></strong></p>
+<p>其中offset从0开始，没增加一页，就加10</p>
+<p>每部电影的剧情简介需要在详情页才能看到，所以我们点击影片，发现其Ajax中的URL也存在规律：</p>
+<p><strong><a target="_blank" rel="noopener" href="https://spa1.scrape.center/api/movie/%7B%7D/">https://spa1.scrape.center/api/movie/{}/</a></strong></p>
+<p>其中{}为对应影片的id值</p>
+<h4 id="步骤三-编写爬虫代码"><a href="#步骤三-编写爬虫代码" class="headerlink" title="步骤三 编写爬虫代码"></a>步骤三 编写爬虫代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests,openpyxl<br><br><span class="hljs-comment"># 首先创建工作簿</span><br>wb = openpyxl.Workbook()<br><span class="hljs-comment"># 激活一个工作表</span><br>sheet = wb.active<br><span class="hljs-comment">#给工作表命名</span><br>sheet.title=<span class="hljs-string">&#x27;电影&#x27;</span><br><span class="hljs-comment"># 每种信息取个名字</span><br>sheet[<span class="hljs-string">&#x27;A1&#x27;</span>] = <span class="hljs-string">&#x27;名称&#x27;</span><br>sheet[<span class="hljs-string">&#x27;B1&#x27;</span>] = <span class="hljs-string">&#x27;类别&#x27;</span><br>sheet[<span class="hljs-string">&#x27;C1&#x27;</span>] = <span class="hljs-string">&#x27;上映日期&#x27;</span><br>sheet[<span class="hljs-string">&#x27;D1&#x27;</span>] = <span class="hljs-string">&#x27;评分&#x27;</span><br>sheet[<span class="hljs-string">&#x27;E1&#x27;</span>] = <span class="hljs-string">&#x27;剧情简介&#x27;</span><br><br>headers = &#123;<br>  <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36&#x27;</span><br>&#125;<br>url_format = <span class="hljs-string">&#x27;https://spa1.scrape.center/api/movie/?limit=10&amp;offset=&#123;&#125;&#x27;</span><br><br><span class="hljs-comment"># 爬取网页前三页</span><br><span class="hljs-comment"># 可以使用函数封装</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">30</span>,<span class="hljs-number">10</span>):<br>  <span class="hljs-comment">#爬取每页的电影列表</span><br>  url = url_format.<span class="hljs-built_in">format</span>(i)<br>  res = requests.get(url,headers = headers)<br>  res_json = res.json()<br>  res_data = res_json[<span class="hljs-string">&#x27;results&#x27;</span>]<br>  <span class="hljs-keyword">for</span> data <span class="hljs-keyword">in</span> res_data:<br>    <span class="hljs-comment"># 爬取电影名称</span><br>    data_name = data[<span class="hljs-string">&#x27;name&#x27;</span>]<br>    <span class="hljs-comment"># 电影类别</span><br>    data_categories = <span class="hljs-string">&#x27;,&#x27;</span>.join(data[<span class="hljs-string">&#x27;categories&#x27;</span>])<br>    <span class="hljs-comment"># 电影日期</span><br>    data_date = data[<span class="hljs-string">&#x27;published_at&#x27;</span>]<br>    <span class="hljs-comment"># 电影评分</span><br>    data_score = data[<span class="hljs-string">&#x27;score&#x27;</span>]<br>    <span class="hljs-comment"># 电影ID</span><br>    data_id = data[<span class="hljs-string">&#x27;id&#x27;</span>]<br>    <span class="hljs-comment"># 每部电影详情页链接</span><br>    intro_url = <span class="hljs-string">&#x27;https://spa1.scrape.center/api/movie/&#x27;</span> + <span class="hljs-built_in">str</span>(data_id)<br>    res2 = requests.get(intro_url,headers = headers)<br>    res2_json = res2.json()<br>    <span class="hljs-comment"># 电影简介</span><br>    data_drama = res2_json[<span class="hljs-string">&#x27;drama&#x27;</span>]<br>    <span class="hljs-comment"># 放到工作表里面</span><br>    sheet.append([data_name,data_categories,data_date,data_score,data_drama])<br><br><span class="hljs-comment"># 保存Excel文件</span><br>wb.save(<span class="hljs-string">&#x27;电影.xlsx&#x27;</span>)<br>  <br></code></pre></td></tr></table></figure>
 
-<p><strong>如果下标访问超界，R不会报错，超界部分用NA表示</strong></p>
-<p>逻辑下标表示取出符合条件的下标元素</p>
-<p>which()用来查找符合满足条件的<strong>下标</strong>，例如which(x&gt;5)</p>
-<p>向量可以为每个元素命名</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs R">ages <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot; 李明&quot;</span><span class="hljs-operator">=</span><span class="hljs-number">30</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot; 张聪&quot;</span><span class="hljs-operator">=</span><span class="hljs-number">25</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot; 刘颖&quot;</span><span class="hljs-operator">=</span><span class="hljs-number">28</span><span class="hljs-punctuation">)</span><br><br>ages <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">30</span><span class="hljs-punctuation">,</span> <span class="hljs-number">25</span><span class="hljs-punctuation">,</span> <span class="hljs-number">28</span><span class="hljs-punctuation">)</span><br><span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>ages<span class="hljs-punctuation">)</span> <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot; 李明&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot; 张聪&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot; 刘颖&quot;</span><span class="hljs-punctuation">)</span><br><br>ages <span class="hljs-operator">&lt;-</span> setNames<span class="hljs-punctuation">(</span><span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">30</span><span class="hljs-punctuation">,</span> <span class="hljs-number">25</span><span class="hljs-punctuation">,</span> <span class="hljs-number">28</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot; 李明&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot; 张聪&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot; 刘颖&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
-
-<p>这样可以通过名字访问元素</p>
-<h4 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h4><p>unique()取出向量重复元素</p>
-<p>in判断是否属于关系</p>
-<p>函数 match(x, table) 对向量 x 的每个元素，从向量 table 中查找其<strong>首次</strong>出现位置并<strong>返回这些位置</strong>。没有匹配到的元素位置返回 NA_integer_(整数型缺失值)。</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs R">match<span class="hljs-punctuation">(</span><span class="hljs-number">5</span><span class="hljs-punctuation">,</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">5</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br><span class="hljs-comment">## [1] 2</span><br>match<span class="hljs-punctuation">(</span><span class="hljs-number">5</span><span class="hljs-punctuation">,</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">5</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span><span class="hljs-number">5</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br><span class="hljs-comment">## [1] 2</span><br>match<span class="hljs-punctuation">(</span><span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span><span class="hljs-number">5</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">5</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span><span class="hljs-number">5</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br><span class="hljs-comment">## [1] 3 2</span><br>match<span class="hljs-punctuation">(</span><span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span><span class="hljs-number">5</span><span class="hljs-punctuation">,</span><span class="hljs-number">0</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">5</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span><span class="hljs-number">5</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br><span class="hljs-comment">## [1] 3 2 NA</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>intersect(x,y)求交集</li>
-<li>union()求并集</li>
-<li>setdiff(x,y)求差集</li>
-<li>setequal(x,y)判断集合是否相等，不受次序的影响</li>
-</ul>
+<h4 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h4><p><img src="/images/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%BB%93%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="结果展示"></p>
 
               
             </div>
@@ -366,7 +354,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/">#R学习笔记（基础）</a>
+        <a href="/tags/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/">#爬虫学习笔记（基础）</a>
       
     </div>
   
@@ -380,9 +368,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/30/%E5%AD%A6%E4%B9%A0%E6%B4%BE/R%E7%AC%94%E8%AE%B0/%E9%80%BB%E8%BE%91%E5%9E%8B%E5%90%91%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97/" title="逻辑型向量和运算">
+                      <a href="/2023/11/18/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%AE%9E%E6%88%983%20%E7%88%AC%E5%8F%96%E9%93%BE%E5%AE%B6%E7%A7%9F%E6%88%BF/" title="实战3 基于链家租房的爬虫实战">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">逻辑型向量和运算</span>
+                        <span class="hidden-mobile">实战3 基于链家租房的爬虫实战</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -390,8 +378,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/30/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/%E5%AE%9E%E6%88%981%20%E7%88%AC%E5%8F%96%E7%99%BE%E5%BA%A6%E7%99%BE%E7%A7%91/" title="实战1 基于静态网页的爬虫实战">
-                        <span class="hidden-mobile">实战1 基于静态网页的爬虫实战</span>
+                      <a href="/2023/11/18/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/Scrapy%E6%A1%86%E6%9E%B6/" title="Scrapy框架">
+                        <span class="hidden-mobile">Scrapy框架</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
