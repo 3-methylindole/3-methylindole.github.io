@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
 <meta property="article:published_time" content="2023-11-17T09:32:24.375Z">
-<meta property="article:modified_time" content="2023-11-17T09:57:51.240Z">
+<meta property="article:modified_time" content="2023-11-18T02:28:37.304Z">
 <meta property="article:author" content="xzy">
 <meta property="article:tag" content="爬虫学习笔记（基础）">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          397 字
+          1.1k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          4 分钟
+          10 分钟
         
       </span>
     
@@ -318,7 +318,10 @@
 <li>多进程：利用CPU多核优势，在同一时间并行执行多个任务，可以大大提高效率。</li>
 <li>协程：协程本质上是一个单线程，但可以通过它实现异步操作，例如爬虫在等待时间中可以干其他许多事情，等到响应之后再换回来继续处理，充分利用CPU资源。</li>
 </ul>
-<h2 id="gevent-Queue协程"><a href="#gevent-Queue协程" class="headerlink" title="gevent-Queue协程"></a>gevent-Queue协程</h2>
+<h2 id="gevent-Queue协程"><a href="#gevent-Queue协程" class="headerlink" title="gevent-Queue协程"></a>gevent-Queue协程</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 从gevent里导入monkey模块</span><br><span class="hljs-keyword">from</span> gevent <span class="hljs-keyword">import</span> monkey<br><span class="hljs-comment"># 把程序变成协作模式，帮助程序实现异步</span><br>monkey.patch_all() <span class="hljs-comment"># 猴子补丁</span><br><span class="hljs-keyword">import</span> gevent,time,requests<br><span class="hljs-keyword">from</span> gevent.queue <span class="hljs-keyword">import</span> Queue<br><br>headers = &#123;<br>  <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;balabal&#x27;</span><br>&#125;<br>url_list = [<span class="hljs-string">&#x27;http://bababab/com&#x27;</span>,<span class="hljs-string">&#x27;http://bababab/com&#x27;</span>,<span class="hljs-string">&#x27;http://bababab/com&#x27;</span>]<br><span class="hljs-comment"># 创建队列对象</span><br>work = Queue()<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> url_list:<br>  work.put_nowait(url)<br><span class="hljs-comment"># 定义爬取函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">crawler</span>():<br>  <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> work.empty():<br>    url = work.get_nowait()<br>    res = req.requests(url,headers = headers)<br><span class="hljs-comment"># 创建三个爬虫</span><br><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>):<br>  <span class="hljs-comment"># spawn创建执行爬取函数的任务</span><br>  task = gevent.spawn(crawler)<br>  task_list.append(task)<br>  <br><span class="hljs-comment"># 使用joinall执行列表里的所有任务</span><br>gevent.joinall(task_list)<br></code></pre></td></tr></table></figure>
+
+<p><strong>猴子补丁monkey.patch_all()—创建队列对象Queue()—定义爬取函数crawler()—创建任务列表spawn()—执行任务join_all()</strong></p>
+
               
             </div>
             <hr/>
@@ -363,6 +366,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/11/18/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/Selenium/" title="Selenium">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Selenium</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
