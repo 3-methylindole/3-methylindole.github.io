@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
 <meta property="article:published_time" content="2023-11-18T08:28:50.593Z">
-<meta property="article:modified_time" content="2023-11-18T09:23:51.519Z">
+<meta property="article:modified_time" content="2025-07-12T04:53:55.203Z">
 <meta property="article:author" content="xzy">
 <meta property="article:tag" content="爬虫学习笔记（基础）">
 <meta name="twitter:card" content="summary_large_image">
@@ -313,24 +313,23 @@
 <h2 id="使用的python库"><a href="#使用的python库" class="headerlink" title="使用的python库"></a>使用的python库</h2><p>selenium, scrapy, openpyxl, time</p>
 <h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h4 id="步骤1-单独使用Selenium爬取"><a href="#步骤1-单独使用Selenium爬取" class="headerlink" title="步骤1 单独使用Selenium爬取"></a>步骤1 单独使用Selenium爬取</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-keyword">import</span> requests,openpyxl,time<br><span class="hljs-comment"># 实现无可视化操作</span><br><span class="hljs-keyword">from</span> selenium.webdriver.chrome.options <span class="hljs-keyword">import</span> Options<br><span class="hljs-comment"># 实现规避检测</span><br><span class="hljs-keyword">from</span> selenium.webdriver <span class="hljs-keyword">import</span> ChromeOptions<br><br>wb = openpyxl.Workbook()<br>sheet = wb.active<br>sheet.title = <span class="hljs-string">&#x27;晴天&#x27;</span><br>list1 = [<span class="hljs-string">&#x27;页码&#x27;</span>,<span class="hljs-string">&#x27;序号&#x27;</span>,<span class="hljs-string">&#x27;评论&#x27;</span>]<br>list2 = [<span class="hljs-string">&#x27;A1&#x27;</span>,<span class="hljs-string">&#x27;B1&#x27;</span>,<span class="hljs-string">&#x27;C1&#x27;</span>]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(list1)):<br>  sheet[list2[i]] = list1[i]<br>  <br><span class="hljs-comment">#实例option对象</span><br>chrome_options = Options()<br>chrome_options.add_argument(<span class="hljs-string">&#x27;--headless&#x27;</span>)<br><span class="hljs-comment">#实现规避检测</span><br>option = ChromeOptions()<br>option.add_experimental_option(<span class="hljs-string">&#x27;excludeSwitches&#x27;</span>,[<span class="hljs-string">&#x27;enable-automation&#x27;</span>])<br><span class="hljs-comment">#设置引擎</span><br>dr = webdriver.Chrome(chrome_options = chrome_options,options = option)<br><span class="hljs-comment">#使用get()方法打开指定url</span><br>dr.get(<span class="hljs-string">&#x27;http://www.kuwo.cn/play_detail/228908&#x27;</span>)<br><span class="hljs-comment"># 给浏览器缓冲时间</span><br>time.sleep(<span class="hljs-number">2</span>)<br>count = <span class="hljs-number">0</span><br><span class="hljs-comment">#设置滚动条距离顶部的信息</span><br>scrolldown = <span class="hljs-string">&#x27;var action=documentElement.scrollTop=10000&#x27;</span><br><span class="hljs-comment">#定位页码</span><br>pagelist = dr.find_element(By.CLASS_NAME,<span class="hljs-string">&#x27;page-wrap&#x27;</span>).find_elements(By.TAG_NAME,<span class="hljs-string">&#x27;span&#x27;</span>)<br><span class="hljs-comment">#提取前三页内容</span><br><span class="hljs-keyword">for</span> page <span class="hljs-keyword">in</span> pagelist:<br>  <span class="hljs-comment">#拉到页面最底部方便点击页码</span><br>  dr.execute_script(scrolldown)<br>  <span class="hljs-comment"># 点击页码</span><br>  page.click()<br>  time.sleep(<span class="hljs-number">2</span>)<br>  <span class="hljs-comment">#提取当页所有内容</span><br>  comments_all = dr.find_element(By.CLASS_NAME,<span class="hljs-string">&#x27;new-comment-out&#x27;</span>).find_elements(By.CLASS_NAME,<span class="hljs-string">&#x27;msg-text&#x27;</span>)<br>  <span class="hljs-comment">#提取每一条评论</span><br>  <span class="hljs-keyword">for</span> comment <span class="hljs-keyword">in</span> comments_all:<br>    <span class="hljs-built_in">print</span>(comment.text)<br>    count = count + <span class="hljs-number">1</span><br>    sheet.append([page.text,count,comment.text])<br>dr.close()<br>wb.save(<span class="hljs-string">&#x27;晴天.xlsx&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
 
-<h4 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h4><p><img src="/images/selenium%E7%BB%93%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="selenium爬取"></p>
+<h4 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h4><p><img src="/Users/xiaozhiying/Desktop/%E2%80%BC%EF%B8%8F%E6%96%87%E4%BB%B6%E5%A4%B9/hexo/source/images/selenium%E7%BB%93%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="selenium爬取"></p>
 <h4 id="步骤2-将步骤1的结果在scrapy框架里实现"><a href="#步骤2-将步骤1的结果在scrapy框架里实现" class="headerlink" title="步骤2 将步骤1的结果在scrapy框架里实现"></a>步骤2 将步骤1的结果在scrapy框架里实现</h4><p><strong>本步骤的关键在于如何用selenium中实例化的浏览器代替scrapy默认的下载器去获取数据（设计到对爬虫中间件的修改）</strong></p>
 <p>首先创建scrapy项目，在终端输入scrapy startproject MUSIC并执行后，输出下图项目。</p>
-<p><img src="/images/MUSIC%E9%A1%B9%E7%9B%AE.png" srcset="/img/loading.gif" lazyload alt="MUSIC项目"></p>
+<p><img src="/Users/xiaozhiying/Desktop/%E2%80%BC%EF%B8%8F%E6%96%87%E4%BB%B6%E5%A4%B9/hexo/source/images/MUSIC%E9%A1%B9%E7%9B%AE.png" srcset="/img/loading.gif" lazyload alt="MUSIC项目"></p>
 <p>首先定义item，定义页码page，序号number，评论内容content，使用scrapy.Field（）方法实现。</p>
-<p><img src="/images/item%E7%BC%96%E5%86%99.png" srcset="/img/loading.gif" lazyload alt="编写item"></p>
+<p><img src="/Users/xiaozhiying/Desktop/%E2%80%BC%EF%B8%8F%E6%96%87%E4%BB%B6%E5%A4%B9/hexo/source/images/item%E7%BC%96%E5%86%99.png" srcset="/img/loading.gif" lazyload alt="编写item"></p>
 <p>然后在spiders下创建爬虫文件music.py并编写。首先导入需要的库，然后定义一个爬虫类musicspider，该类继承自scrapy.spider,定义爬虫的名字为music,在class MusicSpider(scrapy.Spider)中定义实例化浏览器的初始函数，实例options对象，设置无可视化界面，即不让浏览器弹出来（无头浏览器），再设置引擎为Safari浏览器，作用是真实的打开Safari浏览器。最后实例化的浏览器用get()方法打开指定url，并给浏览器加载缓冲时间。最后定义对应的浏览器关闭函数（关闭函数在爬虫文件的最后定义）。</p>
-<p><img src="/images/%E4%BF%AE%E6%94%B9%E4%B8%AD%E9%97%B4%E4%BB%B6.png" srcset="/img/loading.gif" lazyload alt="修改中间件"></p>
+<p><img src="/Users/xiaozhiying/Desktop/%E2%80%BC%EF%B8%8F%E6%96%87%E4%BB%B6%E5%A4%B9/hexo/source/images/%E4%BF%AE%E6%94%B9%E4%B8%AD%E9%97%B4%E4%BB%B6.png" srcset="/img/loading.gif" lazyload alt="修改中间件"></p>
 <p>music.py中定义parse，parse是默认处理response的方法，设置count进行评论计数，计算爬取的评论数。设置滚动条距离顶部的位置，超过10000就是最底部，然后通过点击页码提取多页评论，使用find_element和find_elements方法进行页码定位。</p>
 <p>最后使用循环爬取前三页的评论，先拉到页面最底部，以便点击页码，使用click()方法进行页码点击，使用find_element和find_elements提取当前页面的所有评论，然后使用循环逐条存储页码、序号和评论到Excel表，最后保存表并关闭。</p>
-<p><img src="/images/%E5%AE%9A%E4%B9%89parse.png" srcset="/img/loading.gif" lazyload alt="定义parse"></p>
+<p><img src="/Users/xiaozhiying/Desktop/%E2%80%BC%EF%B8%8F%E6%96%87%E4%BB%B6%E5%A4%B9/hexo/source/images/%E5%AE%9A%E4%B9%89parse.png" srcset="/img/loading.gif" lazyload alt="定义parse"></p>
 <p>可以看到，这时parse直接是从提取数据开始的，没有了方法一中获取数据的代码。使用此方法时需要在settings.py文件中去掉下载中间件代码的注释，如下图所示，对 middlewares.py中定义的下载方法名称的语句去除注释符。对管道语句注释去除，后面将会利用管道文件将数据存储到Excel表。同时进行一下常规设置和延时设置。</p>
-<p><img src="/images/%E4%BF%AE%E6%94%B9%E8%AE%BE%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="修改setting文件"></p>
-<p>编写管道文件，定义初始化函数，当类实例化时自动执行，定义默认处理item的方法，定义当爬虫结束时，自动执行close_spider()。</p>
-<p><img src="/images/%E7%BC%96%E5%86%99%E7%AE%A1%E9%81%93%E6%96%87%E4%BB%B6.png" srcset="/img/loading.gif" lazyload alt="编写管道文件"></p>
+<p><img src="/Users/xiaozhiying/Desktop/%E2%80%BC%EF%B8%8F%E6%96%87%E4%BB%B6%E5%A4%B9/hexo/source/images/%E4%BF%AE%E6%94%B9%E8%AE%BE%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="修改setting文件"></p>
+<p>编写管道文件，定义初始化函数，当类实例化时自动执行，定义默认处理item的方法，定义当爬虫结束时，自动执行close_spider()。<img src="/Users/xiaozhiying/Desktop/%E2%80%BC%EF%B8%8F%E6%96%87%E4%BB%B6%E5%A4%B9/hexo/source/images/%E7%BC%96%E5%86%99%E7%AE%A1%E9%81%93%E6%96%87%E4%BB%B6.png" srcset="/img/loading.gif" lazyload alt="编写管道文件"></p>
 <p>在根目录下创建main()函数，用来执行整个scrapy框架</p>
-<p><img src="/images/%E7%BC%96%E5%86%99main%E5%87%BD%E6%95%B0.png" srcset="/img/loading.gif" lazyload alt="编写main函数"></p>
-<h4 id="结果展示-1"><a href="#结果展示-1" class="headerlink" title="结果展示"></a>结果展示</h4><p><img src="/images/scrapy+selenium%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA.png" srcset="/img/loading.gif" lazyload alt="结果展示"></p>
+<p><img src="/Users/xiaozhiying/Desktop/%E2%80%BC%EF%B8%8F%E6%96%87%E4%BB%B6%E5%A4%B9/hexo/source/images/%E7%BC%96%E5%86%99main%E5%87%BD%E6%95%B0.png" srcset="/img/loading.gif" lazyload alt="编写main函数"></p>
+<h4 id="结果展示-1"><a href="#结果展示-1" class="headerlink" title="结果展示"></a>结果展示</h4><p><img src="/Users/xiaozhiying/Desktop/%E2%80%BC%EF%B8%8F%E6%96%87%E4%BB%B6%E5%A4%B9/hexo/source/images/selenium+scrapy%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA.png" srcset="/img/loading.gif" lazyload alt="结果展示"></p>
 
               
             </div>
@@ -376,6 +375,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/02/29/%E5%AD%A6%E4%B9%A0%E6%B4%BE/Docker%E5%AE%89%E8%A3%85/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

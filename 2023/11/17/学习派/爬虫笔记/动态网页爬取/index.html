@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
 <meta property="article:published_time" content="2023-11-17T06:51:17.400Z">
-<meta property="article:modified_time" content="2023-11-17T08:53:11.194Z">
+<meta property="article:modified_time" content="2025-07-12T05:03:14.446Z">
 <meta property="article:author" content="xzy">
 <meta property="article:tag" content="爬虫学习笔记（基础）">
 <meta name="twitter:card" content="summary_large_image">
@@ -309,9 +309,9 @@
             
             <div class="markdown-body">
               
-              <h1 id="Ajax动态网页爬取"><a href="#Ajax动态网页爬取" class="headerlink" title="Ajax动态网页爬取"></a>Ajax动态网页爬取</h1><p>有时候在网页中可以看到网页的内容，但使用requests爬取下来却没有，这是因为requests爬取的只是网页HTML源码，而浏览器我们看到的内容是JavaScript处理数据后生成的数据，网页中的数据有多种来源，可能是Ajax加载的，可能是包含在HTML文档里，可能是javascript和特定算法生成的。</p>
+              <h1 id="Ajax动态网页爬取"><a href="#Ajax动态网页爬取" class="headerlink" title="Ajax动态网页爬取"></a>Ajax动态网页爬取</h1><p>有时候在网页中可以看到网页的内容，但使用requests爬取下来却没有，这是因为requests爬取的只是网页HTML源码，而浏览器给我们看到的内容是JavaScript处理数据后生成的数据，网页中的数据有多种来源，可能是Ajax加载的，可能是包含在HTML文档里，可能是javascript和特定算法生成的。</p>
 <p>对于第一种，是原始网页加载完毕后，会再向服务器请求数据，然后经过处理再呈现在网页上，属于动态网页，可以实现页面灵活多变，还可以实现用户登录和注册等功能。</p>
-<p>第二种是直接在HTML文档中，解析即是网页内容，属于静态网页，本站即使静态网页，静态网页加载速度快、编写简单，同时也存在着很大的缺陷，如可维护性差、不能根据URL灵活多变的显示内容等。</p>
+<p>第二种是直接在HTML文档中，解析即是网页内容，属于静态网页，本站即使用静态网页，静态网页加载速度快、编写简单，同时也存在着很大的缺陷，如可维护性差、不能根据URL灵活多变的显示内容等。</p>
 <p>第三种类似pyecharts的可视化作图，在数据可视化课程设计大即是美中，使用page生成大屏图，最后的网页结果即是。</p>
 <h2 id="什么是Ajax"><a href="#什么是Ajax" class="headerlink" title="什么是Ajax"></a>什么是Ajax</h2><p>全称Asynchronous JavaScript and XML，即异步的JavaScript和HTML，利用JavaScript在保证页面不刷新、页面链接不被改变的情况下与服务器交换数据并更换网页内容的方法。</p>
 <p>对于传统网页，如果想更新网页内容，就必须刷新整个网页，但有了Ajax网页不被刷新就能获取新的内容。</p>
@@ -330,7 +330,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br>url = <span class="hljs-string">&#x27;http://balabal.com&#x27;</span><br>headers = &#123;<br>  <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;balabalaba&#x27;</span><br>&#125;<br><br>req = requests.get(url,headers = headers)<br><br><span class="hljs-comment"># 使用json方法，将reponse转换成字典列表</span><br>music_json = req.json()<br></code></pre></td></tr></table></figure>
 
 <p>preview中观察数据格式：</p>
-<p><img src="/images/json%E6%95%B0%E6%8D%AE.png" srcset="/img/loading.gif" lazyload alt="json数据"></p>
+<p><img src="/./images/json%E6%95%B0%E6%8D%AE.png" srcset="/img/loading.gif" lazyload alt="json数据"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#根据对应的键，一层一层的取值，一直取到需要的信息所在的共同层，最终是个列表</span><br>music_list = music_json[<span class="hljs-string">&#x27;data&#x27;</span>][<span class="hljs-string">&#x27;list&#x27;</span>]<br><span class="hljs-comment">#遍历列表取值，里面的0，1，2不是键，它们只是列表中元素的编号</span><br><span class="hljs-comment">#列表中的元素又是字典</span><br><span class="hljs-keyword">for</span> music <span class="hljs-keyword">in</span> music_list:<br>	music_album = music[<span class="hljs-string">&#x27;album&#x27;</span>]<br>  music_name = music[<span class="hljs-string">&#x27;name&#x27;</span>]<br>  <span class="hljs-built_in">print</span>(music_album,<span class="hljs-string">&#x27;\n&#x27;</span>,music_name)<br>  <br></code></pre></td></tr></table></figure>
 
 
