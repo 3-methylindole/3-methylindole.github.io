@@ -7,7 +7,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="referrer" content = "no-referrer" />
   <link rel="apple-touch-icon" sizes="76x76" href="/img/photo.png">
   <link rel="icon" href="/img/photo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -26,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/xzy520-09/markdown-img/raw/master/20260811180552004.png">
 <meta property="article:published_time" content="2026-08-08T05:58:59.916Z">
-<meta property="article:modified_time" content="2026-08-11T11:02:05.950Z">
+<meta property="article:modified_time" content="2026-08-11T12:08:38.719Z">
 <meta property="article:author" content="xzy">
 <meta property="article:tag" content="AI for science">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,6 +34,9 @@
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
+
+    <meta name="referrer" content="no-referrer">
+
   
   <title>Adaptive social distancing under variant-speciﬁc transmission dynamics in a spatial SEIIR model with reinforcement learning - Hexo</title>
 
@@ -353,10 +355,16 @@
 <p>  $$f(\tau)&#x3D;\frac{Inc(\tau)}{\sum_{k&#x3D;1}^{\tau_{max}}Inc(k)}$$</p>
 </li>
 <li><p>要想知道区域 $i$ 在第 $t$ 天（今天）到底有多少人真正被感染，根据明天、后天、大后天（$t+\tau$）公布的确诊数字 $D_{reported}$，然后根据概率 $f(\tau)$，算出今天的实际感染（发病）人数。</p>
-<p>  $$\hat{D}<em>i(t) &#x3D; \sum</em>{\tau&#x3D;1}^{\tau_{max}} D_{reported,i}(t+\tau)f(\tau)$$</p>
+  
+    $$ \hat{D}_i(t) = \sum_{\tau=1}^{\tau_{\mathrm{max}}} D_{\mathrm{reported},i}(t+\tau)f(\tau) $$
+    
 </li>
 <li><p>由于计算过程中对天数进行了截断（只算到最大延迟 $\tau_{max}$），以及处理边界数据时会产生误差，可能导致算出来的总发病人数和实际累计确诊人数对不上。 因此需要进行最后一步的缩放修正，计算最终的 $D_i(t)$：  </p>
-<p>  $$D_i(t) &#x3D; \hat{D}<em>i(t) \frac{\sum_t D</em>{reported,i}(t)}{\sum_t \hat{D}_i(t)}$$</p>
+  
+
+    $$D_i(t) = \hat{D}*i(t) \frac{\sum_t D*{reported,i}(t)}{\sum_t \hat{D}_i(t)}$$
+    
+    
   <img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260810154348622.png" srcset="/img/loading.gif" lazyload></li>
 </ul>
 <h4 id="Multi-patch-SEIIR-model"><a href="#Multi-patch-SEIIR-model" class="headerlink" title="Multi-patch SEIIR model"></a>Multi-patch SEIIR model</h4><p>We applied the heterogeneous compartmental model and multipatch modeling approach proposed by Jorge et al. (2022) to South Korea’s COVID-19 data.</p>
@@ -370,31 +378,33 @@
 <p> $\lambda_{ii}(t)$ 的计算方式，用来表示居住在同一区域 $i$ 的易感者与感染者之间的本地传播率，同样考虑了双方留在本地或同时前往其他区域的概率。</p>
 <p><strong>场景一：两人都留在本地（区域 $i$）并发生感染</strong></p>
 <ul>
-<li><p>$\frac{\tilde{\beta}<em>{i}(t)}{N</em>{i}}(1-\sum_{j}^{n}\phi_{ij}(t))^{2}$</p>
+<li>$\frac{\tilde{\beta}_{i}(t)}{N_{i}}(1-\sum_{j}^{n}\phi_{ij}(t))^{2}$
+
 <ul>
 <li><p>$\phi_{ij}(t)$ 表示人口从区域 $i$ 移动到区域 $j$ 的概率。那么 $\sum_{j}^{n}\phi_{ij}(t)$ 就是一个人离开区域 $i$ 去<strong>任何其他区域</strong>的总概率。  用 $1$ 减去离开的概率，即 $(1-\sum_{j}^{n}\phi_{ij}(t))$，代表一个人<strong>留在本地（区域 $i$）不外出</strong>的概率。</p>
 </li>
 <li><p>因为疾病传播需要易感者和感染者<strong>两个人</strong>都留在本地才能相遇，所以这个概率需要<strong>平方</strong>，即 $(1-\sum_{j}^{n}\phi_{ij}(t))^{2}$。</p>
 </li>
-<li><p>最后，乘以本地环境的内在传播率 $\frac{\tilde{\beta}<em>{i}(t)}{N</em>{i}}$，就得到了他们在老家相遇并传染的风险。</p>
+<li><p>最后，乘以本地环境的内在传播率 $\frac{\tilde{\beta}_{i}(t)}{N_{i}}$，就得到了他们在老家相遇并传染的风险。</p>
 </li>
 </ul>
 </li>
 </ul>
 <p><strong>场景二：两人恰好去了同一个外地（区域 $j$）并发生感染</strong></p>
 <ul>
-<li>$\sum_{j}^{n}\frac{\tilde{\beta}<em>{j}(t)}{N</em>{j}}\phi_{ij}(t)^{2}$<ul>
+<li>$\sum_{j}^{n}\frac{\tilde{\beta}_{j}(t)}{N_{j}}\phi_{ij}(t)^{2}$
+<ul>
 <li>$\phi_{ij}(t)$ 是一个人从区域 $i$ 去往区域 $j$ 的概率。易感者去了区域 $j$，且感染者也恰好去了区域 $j$，两个人同时去往同一个目的地的概率就是 $\phi_{ij}(t) \times \phi_{ij}(t) &#x3D; \phi_{ij}(t)^{2}$。</li>
-<li>他们在外地相遇后，受外地环境（区域 $j$）的传播率 $\frac{\tilde{\beta}<em>{j}(t)}{N</em>{j}}$ 的影响发生感染。</li>
+<li>他们在外地相遇后，受外地环境（区域 $j$）的传播率 $\frac{\tilde{\beta}_{j}(t)}{N_{j}}$ 的影响发生感染。</li>
 <li>$\sum_{j}^{n}$ 表示把他们可能共同去往的所有外部区域的感染风险全部累加起来。</li>
 </ul>
 </li>
 </ul>
 <p> $\lambda_{ij}(t)$，即居住在区域 $i$ 的易感人群因接触到居住在区域 $j$ 的感染人群而发生感染的概率或速率，有三种场景。</p>
 <ul>
-<li><p><strong>情景 1：两人在区域 $i$ 相遇</strong>。 公式中的对应项为 $\frac{\tilde{\beta}<em>{i}(t)}{N</em>{i}}\phi_{ji}(t)(1-\sum_{k}^{n}\phi_{ik}(t))$。这代表区域 $j$ 的感染者移动到了区域 $i$（由 $\phi_{ji}$ 衡量），而区域 $i$ 的易感者留在了本地没有外出（由 $1-\sum\phi_{ik}$ 衡量），两人在区域 $i$ 的环境下发生了传播。  </p>
-<p>  <strong>情景 2：两人在区域 $j$ 相遇</strong>。 公式中的对应项为 $\frac{\tilde{\beta}<em>{j}(t)}{N</em>{j}}\phi_{ij}(t)(1-\sum_{k}^{n}\phi_{jk}(t))$。这代表区域 $i$ 的易感者移动到了区域 $j$（由 $\phi_{ij}$ 衡量），而区域 $j$ 的感染者留在本地，两人在区域 $j$ 的环境下发生接触。  </p>
-<p>  <strong>情景 3：两人在第三方区域 $k$ 相遇</strong>（$k \ne i, j$）。 公式中的对应项为 $\sum_{k}^{n}\frac{\overline{\beta}<em>{k}(t)}{N</em>{k}}\phi_{ik}(t)\phi_{jk}(t)$。这代表区域 $i$ 的易感者和区域 $j$ 的感染者同时移动到了其他区域 $k$，并在区域 $k$ 的传播率 $\overline{\beta}_{k}$ 作用下发生了感染。</p>
+<li><p><strong>情景 1：两人在区域 $i$ 相遇</strong>。 公式中的对应项为 $\frac{\tilde{\beta}_{i}(t)}{N_{i}}\phi_{ji}(t)(1-\sum_{k}^{n}\phi_{ik}(t))$。这代表区域 $j$ 的感染者移动到了区域 $i$（由 $\phi_{ji}$ 衡量），而区域 $i$ 的易感者留在了本地没有外出（由 $1-\sum\phi_{ik}$ 衡量），两人在区域 $i$ 的环境下发生了传播。  </p>
+<p>  <strong>情景 2：两人在区域 $j$ 相遇</strong>。 公式中的对应项为 $\frac{\tilde{\beta}_{j}(t)}{N_{j}}\phi_{ij}(t)(1-\sum_{k}^{n}\phi_{jk}(t))$。这代表区域 $i$ 的易感者移动到了区域 $j$（由 $\phi_{ij}$ 衡量），而区域 $j$ 的感染者留在本地，两人在区域 $j$ 的环境下发生接触。  </p>
+<p>  <strong>情景 3：两人在第三方区域 $k$ 相遇</strong>（$k \ne i, j$）。 公式中的对应项为 $\sum_{k}^{n}\frac{\overline{\beta}_{k}(t)}{N_{k}}\phi_{ik}(t)\phi_{jk}(t)$。这代表区域 $i$ 的易感者和区域 $j$ 的感染者同时移动到了其他区域 $k$，并在区域 $k$ 的传播率 $\overline{\beta}_{k}$ 作用下发生了感染。</p>
 </li>
 </ul>
 <h4 id="tilde-beta-如何求？"><a href="#tilde-beta-如何求？" class="headerlink" title="$\tilde{\beta}$如何求？"></a><strong>$\tilde{\beta}$如何求？</strong></h4><p>利用实际的每日新增确诊病例数据和跨区域人口流动数据，通过求解一个线性方程组反推出来。</p>
@@ -498,11 +508,14 @@
 </ul>
 </li>
 <li><p><strong>裁剪替代目标函数（Clipped surrogate objective）</strong>：智能体要根据经验来更新策略网络参数，但是每次更新要保证步子不要迈得太大。</p>
-<p>  $$L_{CLIP}(\theta) &#x3D; \mathbb{E}<em>t \left[ \min\left( \frac{\pi_\theta(a_t\vert{}s_t)}{\pi</em>{old}(a_t\vert{}s_t)} (\theta)\hat{A}<em>t, \text{clip}\left(\frac{\pi_\theta(a_t\vert{}s_t)}{\pi</em>{old}(a_t\vert{}s_t)}(\theta), 1 - \epsilon, 1 + \epsilon \right)\hat{A}_t \right) \right]$$</p>
+  
+
+    $$L_{CLIP}(\theta) = \mathbb{E}_t \left[ \min\left( \frac{\pi_\theta(a_t\vert{}s_t)}{\pi_{old}(a_t\vert{}s_t)} (\theta)\hat{A}_t, \text{clip}\left(\frac{\pi_\theta(a_t\vert{}s_t)}{\pi_{old}(a_t\vert{}s_t)}(\theta), 1 - \epsilon, 1 + \epsilon \right)\hat{A}_t \right) \right]$$
+
 <ul>
 <li><p><strong>$\frac{\pi_\theta}{\pi_{old}}$（新老策略比率）：</strong> 计算的是“新策略”执行某个动作的概率，比“老策略”高了多少倍。  </p>
 </li>
-<li><p><strong>$\hat{A}_t$（优势函数, Advantage estimate）：</strong> 由广义优势估计（GAE）算出，代表“这个动作比原本预期的平均水平好多少”。如果 $\hat{A}_t &gt; 0$，说明动作是好动作，应该提高它的概率。  $\hat{A}<em>t$ 是怎么算出来的呢？它正是依赖<strong>价值网络的预测</strong>算出来的（$\delta_t &#x3D; r_t + \gamma V_\psi(s</em>{t+1}) - V_\psi(s_t)$</p>
+<li><p><strong>$\hat{A}_t$（优势函数, Advantage estimate）：</strong> 由广义优势估计（GAE）算出，代表“这个动作比原本预期的平均水平好多少”。如果 $\hat{A}_t &gt; 0$，说明动作是好动作，应该提高它的概率。  $\hat{A}_t$ 是怎么算出来的呢？它正是依赖<strong>价值网络的预测</strong>算出来的（$\delta_t = r_t + \gamma V_\psi(s_{t+1}) - V_\psi(s_t)$）</p>
 </li>
 <li><p><strong>$\text{clip}(\dots, 1-\epsilon, 1+\epsilon)$（裁剪机制）：</strong> 这是 PPO 稳定的秘诀。它强制规定：就算某个动作再好，新策略采纳它的概率提升也不能超过老策略的 $1+\epsilon$ 倍（$\epsilon$ 通常是 0.2）；就算某个动作再差，概率下降也不能跌破 $1-\epsilon$。  </p>
 </li>
@@ -514,7 +527,7 @@
 <li><strong>$L_S(\theta)$（熵奖励）：</strong> 熵（Entropy, $S$）代表系统的混乱度或随机性。加入这个项目是为了<strong>鼓励探索</strong>。如果不加这个，AI 可能很早就认定某一种封控方法有效，然后就只选这一个死理。加入熵奖励后，系统会鼓励AI在前期“随机应变”、“多试试别的可能”，别太快把策略定死。</li>
 </ul>
 </li>
-<li><p>价值网络：$$L_V(\psi) \leftarrow \frac{1}{\vert{}B\vert{}} \sum_{t \in B} (V_\psi(s_t) - \hat{G}<em>t)^2, \quad L_S(\theta) \leftarrow \frac{1}{\vert{}B\vert{}} \sum</em>{t \in B} S(\pi_\theta(\cdot\vert{}s_t))$$</p>
+<li><p>价值网络：$$L_V(\psi) \leftarrow \frac{1}{\vert{}B\vert{}} \sum_{t \in B} (V_\psi(s_t) - \hat{G}_t)^2, \quad L_S(\theta) \leftarrow \frac{1}{\vert{}B\vert{}} \sum_{t \in B} S(\pi_\theta(\cdot\vert{}s_t))$$</p>
 <ul>
 <li><strong>$L_V(\psi)$（价值损失）</strong>：它计算的是价值网络输出 $V_\psi(s_t)$ 与真实得到的回报 $\hat{G}_t$ 之间的误差（均方差）。误差越小，说明打分越准。</li>
 </ul>
@@ -687,6 +700,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -943,6 +962,44 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
