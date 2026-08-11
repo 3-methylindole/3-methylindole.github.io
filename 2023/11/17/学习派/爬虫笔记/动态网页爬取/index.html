@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%ABlogo.png">
 <meta property="article:published_time" content="2023-11-17T06:51:17.400Z">
-<meta property="article:modified_time" content="2025-07-12T05:03:14.446Z">
+<meta property="article:modified_time" content="2026-08-11T10:14:21.424Z">
 <meta property="article:author" content="xzy">
 <meta property="article:tag" content="爬虫学习笔记（基础）">
 <meta name="twitter:card" content="summary_large_image">
@@ -316,7 +316,7 @@
 <h2 id="什么是Ajax"><a href="#什么是Ajax" class="headerlink" title="什么是Ajax"></a>什么是Ajax</h2><p>全称Asynchronous JavaScript and XML，即异步的JavaScript和HTML，利用JavaScript在保证页面不刷新、页面链接不被改变的情况下与服务器交换数据并更换网页内容的方法。</p>
 <p>对于传统网页，如果想更新网页内容，就必须刷新整个网页，但有了Ajax网页不被刷新就能获取新的内容。</p>
 <h2 id="查看Ajax请求"><a href="#查看Ajax请求" class="headerlink" title="查看Ajax请求"></a>查看Ajax请求</h2><p>网页HTML源码中不包含我们想要的数据，我们需要捕获Ajax请求才能从中爬取我们想要的信息，在哪儿查看Ajax请求？</p>
-<p><img src="/images/Ajax%E8%AF%B7%E6%B1%82.png" srcset="/img/loading.gif" lazyload alt="Ajax请求"></p>
+<p><img src="/Users/xiaozhiying/Desktop/%E2%80%BC%EF%B8%8F%E6%96%87%E4%BB%B6%E5%A4%B9/hexo/source/images/Ajax%E8%AF%B7%E6%B1%82.png" srcset="/img/loading.gif" lazyload alt="Ajax请求"></p>
 <p><strong>开发者工具—Network—preserve log—Fetch&#x2F;XHR</strong></p>
 <p>Network可以监听所有浏览器与服务器之间发送请求和接受响应的所有记录。</p>
 <p>preserve log 可以保留所有日志。</p>
@@ -330,7 +330,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br>url = <span class="hljs-string">&#x27;http://balabal.com&#x27;</span><br>headers = &#123;<br>  <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;balabalaba&#x27;</span><br>&#125;<br><br>req = requests.get(url,headers = headers)<br><br><span class="hljs-comment"># 使用json方法，将reponse转换成字典列表</span><br>music_json = req.json()<br></code></pre></td></tr></table></figure>
 
 <p>preview中观察数据格式：</p>
-<p><img src="/./images/json%E6%95%B0%E6%8D%AE.png" srcset="/img/loading.gif" lazyload alt="json数据"></p>
+<p><img src="/Users/xiaozhiying/Desktop/%E2%80%BC%EF%B8%8F%E6%96%87%E4%BB%B6%E5%A4%B9/hexo/source/images/json%E6%95%B0%E6%8D%AE.png" srcset="/img/loading.gif" lazyload alt="json数据"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#根据对应的键，一层一层的取值，一直取到需要的信息所在的共同层，最终是个列表</span><br>music_list = music_json[<span class="hljs-string">&#x27;data&#x27;</span>][<span class="hljs-string">&#x27;list&#x27;</span>]<br><span class="hljs-comment">#遍历列表取值，里面的0，1，2不是键，它们只是列表中元素的编号</span><br><span class="hljs-comment">#列表中的元素又是字典</span><br><span class="hljs-keyword">for</span> music <span class="hljs-keyword">in</span> music_list:<br>	music_album = music[<span class="hljs-string">&#x27;album&#x27;</span>]<br>  music_name = music[<span class="hljs-string">&#x27;name&#x27;</span>]<br>  <span class="hljs-built_in">print</span>(music_album,<span class="hljs-string">&#x27;\n&#x27;</span>,music_name)<br>  <br></code></pre></td></tr></table></figure>
 
 
