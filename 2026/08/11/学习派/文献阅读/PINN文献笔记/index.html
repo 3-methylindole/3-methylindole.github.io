@@ -16,20 +16,20 @@
   <meta name="author" content="xzy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="结构化查询语言（SQL），包括数据增删改查等，结合数据系统概论（第6版）和SQL必知必会（第四版），以mysql数据管理系统进行实操。">
+    <meta name="description" content="PINN在传染病预测中的应用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关系数据库标准语言SQL">
-<meta property="og:url" content="http://example.com/2025/07/13/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80SQL/index.html">
+<meta property="og:title" content="Physics-informed deep learning for infectious disease forecasting">
+<meta property="og:url" content="http://example.com/2026/08/11/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/PINN%E6%96%87%E7%8C%AE%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="结构化查询语言（SQL），包括数据增删改查等，结合数据系统概论（第6版）和SQL必知必会（第四版），以mysql数据管理系统进行实操。">
+<meta property="og:description" content="PINN在传染病预测中的应用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/xzy520-09/markdown-img/raw/master/20260811210747129.png">
-<meta property="article:published_time" content="2025-07-13T03:28:23.242Z">
-<meta property="article:modified_time" content="2026-08-11T13:08:15.514Z">
+<meta property="og:image" content="https://gitee.com/xzy520-09/markdown-img/raw/master/20260811204913253.png">
+<meta property="article:published_time" content="2026-08-11T12:47:45.559Z">
+<meta property="article:modified_time" content="2026-08-11T13:05:02.301Z">
 <meta property="article:author" content="xzy">
-<meta property="article:tag" content="数据库系统概论（第6版）">
+<meta property="article:tag" content="AI for science">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/xzy520-09/markdown-img/raw/master/20260811210747129.png">
+<meta name="twitter:image" content="https://gitee.com/xzy520-09/markdown-img/raw/master/20260811204913253.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -38,7 +38,7 @@
     <meta name="referrer" content="no-referrer">
 
   
-  <title>关系数据库标准语言SQL - Hexo</title>
+  <title>Physics-informed deep learning for infectious disease forecasting - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="关系数据库标准语言SQL"></span>
+            <span id="subtitle" data-typed-text="Physics-informed deep learning for infectious disease forecasting"></span>
           
         </div>
 
@@ -229,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-07-13 11:28" pubdate>
-          2025年7月13日 上午
+        <time datetime="2026-08-11 20:47" pubdate>
+          2026年8月11日 晚上
         </time>
       </span>
     
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          867 字
+          0 字
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          8 分钟
+          1 分钟
         
       </span>
     
@@ -308,51 +308,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">关系数据库标准语言SQL</h1>
+            <h1 style="display: none">Physics-informed deep learning for infectious disease forecasting</h1>
             
             <div class="markdown-body">
               
-              <h2 id="SQL概述"><a href="#SQL概述" class="headerlink" title="SQL概述"></a>SQL概述</h2><p>SQL是数据库国际标准语言，是一种非过程化语言，用户只要说明需要数据库的内容，不必说明存取所需数据的具体过程和操作，通俗的讲，用户只需提出“要什么”，无需指明“怎么干”，存取路径选择和操作由程序自动完成。SQL简单易学，功能丰富，深受用户喜爱和计算机工业欢迎。</p>
-<p>SQL的特点：</p>
-<ol>
-<li><p>功能综合且风格统一：集数据定义语言、数据操纵语言和数据控制语言于一体，可以完成增删改查、安全性、维护等全部操作。</p>
-</li>
-<li><p>数据操作高度非过程化。</p>
-</li>
-<li><p>面向集合的操作方式：操作对象、查找结果都可以是行的集合，层次模型和网状模型操作对象是一条记录。</p>
-</li>
-<li><p>以统一的语法结构提供多种使用方式：SQL既是独立的语言，又是嵌入式语言，SQL能嵌入python等程序中。</p>
-</li>
-<li><p>语言简洁且易学易用。</p>
-<table>
-<thead>
-<tr>
-<th>SQL功能</th>
-<th>动词</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>数据定义</td>
-<td>creat database，drop database</td>
-</tr>
-<tr>
-<td>数据查询</td>
-<td>select</td>
-</tr>
-<tr>
-<td>数据操纵</td>
-<td>insert，update，delete，alter</td>
-</tr>
-<tr>
-<td>数据控制</td>
-<td>grant，revoke</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<h2 id="数据定义"><a href="#数据定义" class="headerlink" title="数据定义"></a>数据定义</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs sql">#mysql中定义数据库<br><span class="hljs-keyword">create</span> database Student<br>#mysql中删除数据库<br><span class="hljs-keyword">drop</span> database Student<br><br>#基本表的定义、删除修改<br>#在Student数据库中创建表Student.student<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> Student.student<br>(sno <span class="hljs-type">char</span>(<span class="hljs-number">8</span>) <span class="hljs-keyword">primary</span> key, #sno是主码<br>sname <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">unique</span>, #sname取唯一值<br>sex <span class="hljs-type">char</span>(<span class="hljs-number">6</span>),<br>brithyday <span class="hljs-type">date</span>,);<br>#建立学生选课表SC<br>#外键必须保证域是相对应的,例如都为<span class="hljs-type">char</span>(<span class="hljs-number">8</span>)<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> Student.SC<br>(sno <span class="hljs-type">char</span>(<span class="hljs-number">8</span>),<br>cno <span class="hljs-type">char</span>(<span class="hljs-number">5</span>),<br>grade <span class="hljs-type">smallint</span>,<br>semester <span class="hljs-type">char</span>(<span class="hljs-number">5</span>),<br>teachingclass <span class="hljs-type">char</span>(<span class="hljs-number">8</span>),<br><span class="hljs-keyword">primary</span> key(sno,cno),<br><span class="hljs-keyword">foreign</span> key(sno) <span class="hljs-keyword">references</span> student(sno));<br></code></pre></td></tr></table></figure>
+              <iframe src="/files/ODE+PINN.pdf" width="100%" height="800px"></iframe>
 
-<p>数据类型：</p>
 
               
             </div>
@@ -385,7 +346,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%EF%BC%88%E7%AC%AC6%E7%89%88%EF%BC%89/">#数据库系统概论（第6版）</a>
+        <a href="/tags/AI-for-science/">#AI for science</a>
       
     </div>
   
@@ -399,7 +360,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/07/16/%E6%8A%98%E8%85%BE%E6%B4%BE/Homebrew%E5%AE%89%E8%A3%85/" title="">
+                      <a href="/2026/08/12/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/Untitled/" title="">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
@@ -409,8 +370,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/07/12/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/Untitled/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2026/08/08/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/SEIIR+RL%E6%96%87%E7%8C%AE%E7%AC%94%E8%AE%B0/" title="Adaptive social distancing under variant-speciﬁc transmission dynamics in a spatial SEIIR model with reinforcement learning">
+                        <span class="hidden-mobile">Adaptive social distancing under variant-speciﬁc transmission dynamics in a spatial SEIIR model with reinforcement learning</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -482,6 +443,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -738,6 +705,44 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
