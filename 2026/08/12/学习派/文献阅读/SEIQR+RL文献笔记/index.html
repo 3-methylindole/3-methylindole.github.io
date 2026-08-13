@@ -1,0 +1,961 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/photo.png">
+  <link rel="icon" href="/img/photo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xzy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="SEIQR仓室模型+D3QN强化学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optimizing spatiotemporal nonpharmaceutical interventions for influenza: An adaptive reinforcement learning approach for regional heterogeneity">
+<meta property="og:url" content="http://example.com/2026/08/12/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/SEIQR+RL%E6%96%87%E7%8C%AE%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SEIQR仓室模型+D3QN强化学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813140453179.png">
+<meta property="article:published_time" content="2026-08-12T02:09:26.505Z">
+<meta property="article:modified_time" content="2026-08-13T14:19:20.281Z">
+<meta property="article:author" content="xzy">
+<meta property="article:tag" content="AI for science">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813140453179.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+
+    <meta name="referrer" content="no-referrer">
+
+  
+  <title>Optimizing spatiotemporal nonpharmaceutical interventions for influenza: An adaptive reinforcement learning approach for regional heterogeneity - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dreamer.</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Optimizing spatiotemporal nonpharmaceutical interventions for influenza: An adaptive reinforcement learning approach for regional heterogeneity"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        xzy
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-12 10:09" pubdate>
+          2026年8月12日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          96 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Optimizing spatiotemporal nonpharmaceutical interventions for influenza: An adaptive reinforcement learning approach for regional heterogeneity</h1>
+            
+            <div class="markdown-body">
+              
+              <h3 id="优化流感的时空非药物干预：区域异质性的自适应强化学习方法"><a href="#优化流感的时空非药物干预：区域异质性的自适应强化学习方法" class="headerlink" title="优化流感的时空非药物干预：区域异质性的自适应强化学习方法"></a>优化流感的时空非药物干预：区域异质性的自适应强化学习方法</h3><p>Optimizing spatiotemporal nonpharmaceutical interventions for influenza: An adaptive reinforcement learning approach for regional heterogeneity</p>
+<p><img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813140453179.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p><strong>Background</strong>：It remains difficult to weigh <strong>regional characteristics</strong> and accurately balance <strong>infection control and socioeconomic costs</strong>.</p>
+<p><strong>Methods</strong>：We propose a susceptible-exposed-infectious-quarantined-removed c mental model-dueling deep Q-network (<strong>SEIQR-Dueling DQN</strong>) framework tailored to <strong>plains, hilly, and plateau cities</strong>. By integrating <strong>climatic, demographic, and health care resource data</strong>, the model captures regional differences in transmission and recovery dynamics. A multidimensional state space and discrete intervention set allow for the **adaptive optimization of NPI strategies **across varying epidemic and resource conditions. Model parameters were estimated by sequential Bayesian optimization, and bootstrap resampling was used to quantify uncertainty. In addition, the performance of the SEIQRDueling DQN strategy was compared with that of the threshold-based strategy in terms of the reduction in cumulative infections, peak prevalence and length of intervention periods.</p>
+<p><strong>Results</strong>：SEIQR-Dueling DQN框架在平衡社会经济影响的同时，根据当地人口结构和疫情趋势动态调整干预时机和组合，分别在平原、丘陵和高原城市降低了累计感染率5.87%、5.99%和5.21%，同时分别实现了高峰减少34.92%、22.23%和8.12%。训练好的模型被应用于具有不同传播动态的城市，并在不同环境中表现出一致的性能。</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>提高对急性呼吸道感染的早期预警和监测是加强公共卫生系统的紧迫任务。目前针对流感的控制努力面临两个基本挑战。第一个是难以平衡及时干预与经济和社会成本，通常被称为决策边界模糊。其次，区域异质性使地方预防和应对变得复杂。</p>
+<p>为了改善对流感演变风险和区域差异的监控，并支持更有效的政策响应。WHO（2024），引入了一个包括传染性、临床严重程度、发病率和死亡率以及卫生系统负担的多维评估框架：选择相关参数；设定阈值，包括疫情爆发、传播强度和临床影响；将这些阈值应用于本地监控数据；并利用结果来指导非药物干预措施（NPIs）的选择和时机。</p>
+<p>但基于阈值来指导NPIs通常依赖于静态权重和固定阈值，这些可能无法有效应对流感传播的动态特性和区域差异（Ziegler等，2022）。这一限制也使得在感染控制和经济成本之间取得平衡变得具有挑战性。</p>
+<p>经典的仓室模型已被广泛应用于描述流感等呼吸道疾病的传播，但这些纯粹的理论框架通常面临挑战，包括参数估计困难、过度依赖简化假设以及有限的适应现实世界复杂性的能力(Garira &amp; Maregere, 2023)。</p>
+<p>最近，Kao等人在日本多个地区采用SEIQR模型与RL智能体相结合，优化了COVID-19控制策略，有效降低了感染高峰和缩短了疫情持续时间（Kao等，2024）。在中国，Yao等人将深度强化学习（DRL）应用于优化香港的NPI，实现了较低的感染率和减少的社会经济成本（Yao等，2023）。</p>
+<p>尽管取得了这些进展，但RL在流感背景下的应用仍处于起步阶段，主要是因为数据驱动框架虽然强大，但高度依赖于数据数量和质量，通常缺乏可解释性，并且在决策中可能难以推广。这迫切需要解决区域异质性、环境变异性和多尺度决策一致性，以开发自适应和稳健的NPI策略</p>
+<h3 id="Data-and-Methods"><a href="#Data-and-Methods" class="headerlink" title="Data and Methods"></a>Data and Methods</h3><h4 id="The-data"><a href="#The-data" class="headerlink" title="The data"></a>The data</h4><ul>
+<li><p>选择三个地区：成都（平原地区）、宜宾（丘陵地区）和阿坝（高原地区）。这些城市在地形、人口分布和资源配置方面存在显著差异。</p>
+</li>
+<li><p>根据2023年四川省统计年鉴的数据，使用总人口、土地面积和医院床位数量估计了人口密度和医疗资源水平。然后，将湿度、人口密度和医疗资源可用性纳入修改后的SEIQR模型，以反映当地在传播和恢复动态中的地方差异。</p>
+</li>
+<li><p>为了更真实地模拟区域间传播，使用迁移矩阵来表示城市间的人口流动。</p>
+</li>
+<li><p>流感数据：Weekly incidence observed in southern-China surveillance（2013–2021） and Sichuan Province (2017–2019)。参数估计通过贝叶斯优化进行。使用单向敏感性分析来评估模型结果的不稳定性。</p>
+<p>  <img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813152735831.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>为了建立比较的基础，首先模拟了在没有任何干预措施的情况下流感传播，这代表了疫情的自然发展过程。对于控制情景，采用了与四川省疾病预防控制中心（四川省CDC）发布的流感风险分类系统相一致的阈值策略。在这个系统中，所有地区根据共享的风险水平实施相同的一套非药物干预措施（NPIs），该风险水平使用流感样疾病百分比（ILI%）的第75百分位数来定义。应用了五个风险等级；除了I级需要专家咨询外，每个后续等级对应着越来越强的干预措施。每个等级的具体NPIs是从四川省CDC发布的官方流感指数同时发布的公共指南中得出的，遵循增量强度原则（基于阈值的NPIs策略分类及相应的NPIs等级）。本研究仅专注于NPIs，不包括疫苗接种；未来的工作可能考虑药物和NPIs的联合效应。</p>
+<p>  <img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813154335367.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>实证研究表明，佩戴口罩可以降低流感传播率10%–50%（李良等，2020年）。在本研究中，佩戴口罩对传播的最大影响被限制在40%。家庭隔离覆盖率限制在最多30%，而额外医疗资源分配的上限为10%。鉴于严格非药物干预措施的经济成本，纳入了与医疗资源分配和可及性相关的惩罚函数，以反映政策实施的实际情况限制。</p>
+</li>
+</ul>
+<h4 id="SEIQR-dueling-DQN-framework"><a href="#SEIQR-dueling-DQN-framework" class="headerlink" title="SEIQR-dueling DQN framework"></a>SEIQR-dueling DQN framework</h4><p><img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813161751069.png" srcset="/img/loading.gif" lazyload></p>
+<p>构建SEIQR模型，三个城市的人口流动通过迁移矩阵连接在一起，其中传播率由温度T、绝对湿度H、人口密度$\rho$和口罩使用率m驱动，恢复率由可用的医院床位$B$驱动。一个对弈的DQN接收包含最近流感发病率、上周的NPIs和当前资源状况的状态向量，并选择一个NPI组合（佩戴口罩、居家隔离、按等级加强的医疗保健）。奖励函数平衡健康影响、经济成本、政策稳定性和误报。网络在损失稳定之前离线训练，之后将学习到的策略在模拟器中闭环运行。</p>
+<h4 id="The-Data-driven-SEIQR-model"><a href="#The-Data-driven-SEIQR-model" class="headerlink" title="The Data-driven SEIQR model"></a>The Data-driven SEIQR model</h4><p><img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813221329876.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中，$\epsilon$ 为潜伏期转染率，$\delta$ 为隔离率（政策依赖变量），$d$ 为隔离康复率，$\kappa$ 为潜伏期个体的相对传染力。</p>
+<ul>
+<li><p>恢复率 $\gamma$ 随可用床位容量 $B$ 动态调整：</p>
+<p>  $\gamma (B) &#x3D; \gamma_0 \left[1 + \lambda \min \left(0.3,\frac{B}{I}\right)\right],$</p>
+<p>  其中 $\gamma_0$ 为基线恢复率，$\lambda$ 为恢复率对床位可用性的弹性系数。</p>
+</li>
+<li><p>传播系数 $\beta$ 综合了温度、湿度、人口密度和口罩使用等修饰因子：</p>
+<p>  $\beta (T, H,\rho ,m) &#x3D; \beta_0 \sigma_{ah} \left[ah_a + (ah - ah_c)^2\right] \left(\frac{T_c}{T}\right)^{T_{exp}} \left(\rho_c + \sigma_\rho \frac{\rho}{\rho_a}\right)(1 - \eta m),$</p>
+<p>  其中 $\beta_0$ 为基线传播率，$ah$ 为绝对湿度，$T$ 为环境温度，$\rho$ 为人口密度，$m$ 为口罩佩戴比例。</p>
+<ol>
+<li><strong>绝对湿度</strong>：U型曲线</li>
+</ol>
+<ul>
+<li>物理机制：绝对湿度（Absolute Humidity）直接影响流感病毒在飞沫和气溶胶中的<strong>存活时间</strong>。研究发现，流感病毒在<strong>极干燥</strong>和<strong>极潮湿</strong>的环境中存活更久，而在中等湿度下存活较差，呈现显著的<strong>U型关系</strong>。</li>
+<li>机制假设：用二次函数$(ah - ah_c)^2$ 来拟合”U型”，$ah_a$是绝对湿度基线影响。$ah_c$是使病毒存活率最低的临界湿度点。</li>
+</ul>
+<ol start="2">
+<li><strong>温度</strong>：幂函数衰减</li>
+</ol>
+<ul>
+<li>物理机制：温度影响病毒包膜的稳定性和人体呼吸道黏膜的防御能力。低温下，病毒脂质包膜更坚硬，存活更久；同时冷空气会抑制鼻腔纤毛清除病毒的能力。</li>
+<li>机制假设：大量研究表明，流感传播率随温度降低呈<strong>幂律增加</strong>，而不是简单的线性增加。这里的 $T_c $是温度阈值，当实际温度$T$低于它时，整个分式大于1，$\beta$上升。</li>
+</ul>
+<ol start="3">
+<li><strong>人口密度</strong>：</li>
+</ol>
+<ul>
+<li>物理机制：当人口密度增加时，接触频率近似<strong>线性增长</strong>，所以用 $σ_ρ(ρ&#x2F;ρ_a)$来表示增量的敏感性。即使人口密度$\rho$为0，人与人之间依然存在基本的家庭和社交接触，这个基础接触率就是$\rho_c$</li>
+</ul>
+<ol start="4">
+<li><strong>口罩</strong>：线性函数</li>
+</ol>
+<ul>
+<li>合理性：假设口罩有效性为$\eta$，佩戴比例为m，那么能成功穿透口罩的病毒比例就是$1−\eta m$。</li>
+</ul>
+</li>
+<li><p>迁移矩阵$w_{ij}$：根据理论模拟数据</p>
+<p>  $w_{ij} \propto p_i^\alpha p_j^\beta \exp\left(-\frac{d_{ij}}{r}\right),$</p>
+<p>  其中 $p_i$ 与 $p_j$ 为位置i和j之间的人口或旅行流量，$d_{ij}$ 为两地大圆距离，$r$ 为距离衰减特征尺度，$\alpha$ 与 $\beta$​ control the dependence on source and destination sizes。</p>
+<p>  <strong>人口守恒</strong>：人口迁移被设定为一种对称交换，确保在模拟过程中各地区的总人口数保持不变。  </p>
+<p>  <strong>状态同步分配</strong>：流动的人群会被按比例重新分配到不同的流行病学状态中，包括易感者（S）、潜伏者（E）、感染者（I）和康复&#x2F;移除者（R）。也就是说，当模型计算出一批人从 A 城移动到 B 城时，模型是按照“出发地当时S、E、I、R各类人群的比例”来按比例分配这批流动人口的健康状态的。被隔离的人员Q是受到管控的，无法参与城际间的自由流动。</p>
+<blockquote>
+<p>注：<strong>文中对这个公式介绍不足，参数未描述是如何确定的</strong></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h4><p>使用Sequential Bayesian Optimization（SBO）算法，对 SEIQR 传染病模型的参数进行调优，使其预测结果最大程度符合真实的流感监测数据。</p>
+<ul>
+<li><p><strong>初始化：</strong> 算法会在所有需要确定的参数的有效取值范围内，随机生成 10 组不同的参数组合。然后，将这 10 组参数分别代入 SEIQR 模型中运行，得到 10 个初步的预测结果。 </p>
+</li>
+<li><p><strong>优化：</strong> 算法接着会进入一个执行 400 次的循环。贝叶斯优化会在后台构建一个“代理模型”（通常是高斯过程），通过分析之前测过的数据，智能推测出下一组最值得测试的参数。它会在两种策略中寻找平衡：  </p>
+<ul>
+<li><strong>利用（Exploitation）：</strong> 在目前已知预测误差最小（效果最好）的参数区域附近进行微调。</li>
+<li><strong>探索（Exploration）：</strong> 去尝试那些尚未测试过、存在较大不确定性的参数区域，以防错过全局最优解。</li>
+</ul>
+</li>
+<li><p><strong>损失函数：</strong>每一次迭代，模型都会利用当前生成的参数运行流感季模拟，并将输出结果与现实中的监测数据对比。损失函数如下： $Loss &#x3D; w_1 \times \text{MSE} + w_2 \times \Delta T_{\text{peak}} + w_3 \times \Delta I_{\text{peak}}$</p>
+<ul>
+<li><p>$\text{MSE}$：预测发病率与实际发病率之间的均方误差。</p>
+</li>
+<li><p>$\Delta T_{\text{peak}}$：峰值出现时间的误差。  </p>
+</li>
+<li><p>$\Delta I_{\text{peak}}$：峰值大小的误差。 为了确保疫情预测的核心指标更加准确，人为调高了均方误差和峰值大小的权重（即 $w_1$ 和 $w_3$ 较大），而适当放宽了对峰值时间的严苛度。</p>
+</li>
+</ul>
+</li>
+<li><p>最优解确定与不确定性量化：400 次循环后，让 $Loss$ 最小的那组参数即被认定为“最优参数”。但为了科学严谨，研究者使用了 <strong>Bootstrap</strong> 来评估这些参数的可靠性：他们从这 400 次优化轨迹产生的数据中，有放回地随机抽取样本，重复了 100 次。 通过这 100 次重抽样，可以观察到参数分布的波动情况，截取其分布的中间 95% 范围，就得出了参数的 <strong>95% 置信区间（95% CI）</strong>。这个区间既反映了传染病模型本身固有的随机性，也包容了由于现实样本数据有限而带来的误差。</p>
+</li>
+</ul>
+<h4 id="强化学习D3QN"><a href="#强化学习D3QN" class="headerlink" title="强化学习D3QN"></a>强化学习D3QN</h4><p>We developed a <strong>D3QN agent（Double DQN + Dueling DQN）</strong> to optimize NPI strategies over a 52-week period, with decisions made weekly across multiple cities.</p>
+<ul>
+<li><p><strong>状态空间：</strong>在每一个决策时间点 $t$，智能体需要“观察”每个城市当前的疫情和资源状态。每个城市的状态向量$s_t$包含以下信息：</p>
+<ul>
+<li><strong>w 周的历史疫情与经济数据</strong>：包括感染者比例（I）、隔离者比例（Q）以及经济损失的标准化数值（总共 3*w个特征）。  </li>
+<li><strong>地形特征代码</strong>：将城市的地形类型（平原、丘陵或高原）进行分类编码，并缩放到单位范围内，以此反映区域异质性。  </li>
+<li><strong>前一周的干预强度</strong>：即上一周执行的戴口罩、居家隔离和医疗资源调配这 3 项 NPIs 的强度级别。</li>
+</ul>
+<p>  这些特征被嵌入并拼接成一个统一的表示。对于 $m$ 个城市，完整的状态向量为 $s_t \in \mathbb{R}^{m(3w+4)}$，它全面捕捉了近期的流行病学趋势、区域异质性以及政策的连续性</p>
+</li>
+<li><p><strong>动作：</strong>对 3 种干预措施（戴口罩、居家隔离、医疗资源分配）进行组合。  </p>
+<ul>
+<li>每种措施分为 4 个强度级别（0 到 3 级）。  </li>
+<li>为了保证政策在现实中的可行性，模型施加了额外的约束条件：组成策略的任意两项干预措施之间，强度级别差异不得超过 2 级；同时，居家隔离的强度必须小于或等于其他两项干预措施的强度。  </li>
+<li>最终形成了 30 种离散的政策组合供智能体选择。</li>
+</ul>
+</li>
+<li><p><strong>奖励函数：</strong>为了平衡公共卫生成本与社会经济成本，模型设定奖励为以下各项的负加权和：</p>
+<p>  $R_t &#x3D; - [w_I I_t + w_Q Q_t + w_L \cdot \text{Economic Loss}_t + w_A \vert{}\vert{}\Delta a_t\vert{}\vert{}^2 + w_F \cdot \text{False Alarm}_t]$</p>
+<ul>
+<li>$I_t$ 和 $Q_t$：感染和隔离的人口比例（反映疾病负担）。  </li>
+<li>$\text{Economic Loss}_t$：与干预措施相关的经济成本。  </li>
+<li>$\vert{}\vert{}\Delta a_t\vert{}\vert{}^2$：干预强度剧烈波动的惩罚项（避免政策改的太频繁）。  </li>
+<li>$\text{False Alarm}_t$：误报惩罚（在低流行率时过度干预的代价）。  </li>
+<li>$w$ 系列参数：用于平衡上述相互竞争的目标权重。</li>
+</ul>
+</li>
+<li><p><strong>网络设计：</strong>模型使用了双分支结构的 <strong>Dueling DQN</strong> 来参数化 Q 值函数 $Q_\theta(s, a)$。  </p>
+<ul>
+<li><p>输入状态首先通过共享的神经网络层转化为 128 维的潜在特征表示 $\phi(s) \in \mathbb{R}^{128}$。  </p>
+</li>
+<li><p>随后网络分成两个分支：</p>
+<ul>
+<li><strong>状态价值分支</strong> $V_{\theta_V}(\phi) \in \mathbb{R}$：评估处于当前状态的固有价值。如果现在疫情全面爆发、医疗系统崩溃，那这个 $V$ 就会很低。</li>
+<li><strong>动作优势分支</strong> $A_{\theta_A}(\phi, a) \in \mathbb{R}^{\vert{}A\vert{}}$：评估在当前状态下，采取某个具体动作相对于其他动作的额外优势。</li>
+</ul>
+</li>
+<li><p>最终的 Q 值由两部分结合计算得出：</p>
+<p>  $Q_\theta(s, a) &#x3D; V_{\theta_V}(\phi) + A_{\theta_A}(\phi, a) - \frac{1}{\vert{}A\vert{}} \sum_{a’} A_{\theta_A}(\phi, a’)$</p>
+<p>  其中减去平均优势项是为了降低在许多动作收益相似时的方差。例如有三个政策，额外优势分别是 +10分、+10分、+11分。如果不减去平均值，AI 会觉得这三个政策都好，容易在训练时产生数值震荡。减去平均值（约 10.3）后，优势变成了 -0.3、-0.3、+0.7。这样 AI 就能清晰地看出第三个政策才是相对最好的。</p>
+<p>  网络的隐藏层结构为 256-128-64，并使用 ReLU 激活函数。</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><span class="hljs-keyword">import</span> torch.nn.functional <span class="hljs-keyword">as</span> F<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">DuelingDQN</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, input_dim=<span class="hljs-number">57</span>, num_actions=<span class="hljs-number">30</span></span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        初始化 Dueling DQN 网络</span><br><span class="hljs-string">        </span><br><span class="hljs-string">        参数:</span><br><span class="hljs-string">            input_dim (int): 状态输入维度。对应 3 个城市 * (3个干预项 * 5周历史 + 4个其他特征)</span><br><span class="hljs-string">            num_actions (int): 动作空间大小。对应 30 种离散的政策组合</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        <span class="hljs-built_in">super</span>(DuelingDQN, self).__init__()<br>        <br>        <span class="hljs-comment"># 1. 共享特征提取层 (Shared Representation)</span><br>        <span class="hljs-comment"># 128-dimensional shared representation φ(s)</span><br>        self.shared_fc1 = nn.Linear(input_dim, <span class="hljs-number">256</span>)<br>        self.shared_fc2 = nn.Linear(<span class="hljs-number">256</span>, <span class="hljs-number">128</span>)<br>        <br>        <span class="hljs-comment"># 2. 状态价值分支</span><br>        <span class="hljs-comment"># 接收 128 维特征，经过 64 神经元的隐层，最终输出 1 维标量</span><br>        self.value_fc = nn.Linear(<span class="hljs-number">128</span>, <span class="hljs-number">64</span>)<br>        self.value_out = nn.Linear(<span class="hljs-number">64</span>, <span class="hljs-number">1</span>)<br>        <br>        <span class="hljs-comment"># 3. 动作优势分支</span><br>        <span class="hljs-comment"># 接收 128 维特征，经过 64 神经元的隐层，最终输出 num_actions 维向量 (30维)</span><br>        self.adv_fc = nn.Linear(<span class="hljs-number">128</span>, <span class="hljs-number">64</span>)<br>        self.adv_out = nn.Linear(<span class="hljs-number">64</span>, num_actions)<br>        <br>        <span class="hljs-comment"># 4. 执行 He 初始化 (Kaiming 初始化)</span><br>        self._initialize_weights()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_initialize_weights</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        对所有权重使用 He-initialized (Kaiming 初始化)</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        <span class="hljs-keyword">for</span> m <span class="hljs-keyword">in</span> self.modules():<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(m, nn.Linear):<br>                nn.init.kaiming_normal_(m.weight, nonlinearity=<span class="hljs-string">&#x27;relu&#x27;</span>)<br>                <span class="hljs-keyword">if</span> m.bias <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>                    nn.init.constant_(m.bias, <span class="hljs-number">0</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        前向传播</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        <span class="hljs-comment"># --- 共享层计算 ---</span><br>        x = F.relu(self.shared_fc1(x))<br>        <span class="hljs-comment"># 此时 phi_s 就是文献中的 φ(s) ∈ R^128</span><br>        phi_s = F.relu(self.shared_fc2(x)) <br>        <br>        <span class="hljs-comment"># --- 双分支独立计算 ---</span><br>        <span class="hljs-comment"># 计算 V(s)</span><br>        v = F.relu(self.value_fc(phi_s))<br>        v = self.value_out(v)  <span class="hljs-comment"># 形状: [batch_size, 1]</span><br>        <br>        <span class="hljs-comment"># 计算 A(s, a)</span><br>        a = F.relu(self.adv_fc(phi_s))<br>        a = self.adv_out(a)    <span class="hljs-comment"># 形状: [batch_size, num_actions]</span><br>        <br>        <span class="hljs-comment"># --- 组合最终 Q 值 ---</span><br>        <span class="hljs-comment"># 公式: Q(s, a) = V(s) + A(s, a) - mean(A(s, a&#x27;))</span><br>        <span class="hljs-comment"># a.mean(dim=1, keepdim=True) 会计算出优势的平均值，保持维度以便进行广播相减</span><br>        q_value = v + a - a.mean(dim=<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>)<br>        <br>        <span class="hljs-keyword">return</span> q_value<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>训练</strong>：用目标网络选择动作，再用当前网络计算目标Q值，避免Q值过高估计</p>
+<ul>
+<li><p><strong>Double QDN</strong>：动作的选择基于当前网络 $Q_\theta$，而价值的更新依赖于目标网络 $Q_{\theta^-}$。目标网络每 100 步通过 Polyak 平均法（$\tau &#x3D; 0.005$）进行软更新。 更新公式为：  </p>
+<p>  $$y &#x3D; r + \gamma Q_{\theta^-}(s’, \arg\max_{a’} Q_\theta(s’, a’))$$</p>
+</li>
+<li><p><strong>优化器与参数</strong>：使用 Adam 算法进行优化（学习率为 $1 \times 10^{-3}$），折扣因子 $\gamma &#x3D; 0.99$，并应用了梯度裁剪（$L^2$ 范数上限为 1）来提高数值稳定性。  </p>
+</li>
+<li><p><strong>经验回放与探索机制</strong>：使用容量为 10,000 的经验回放缓冲区（Replay buffer），以 64 为批量（Minibatches）均匀采样。采用 $\epsilon$-贪婪探索策略，$\epsilon$ 值在训练期间从 1.0 指数衰减到 0.01。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://gitcode.com/gh_mirrors/d3/D3QN">D3QN的实现</a></p>
+<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><h4 id="参数估计结果"><a href="#参数估计结果" class="headerlink" title="参数估计结果"></a>参数估计结果</h4><p>为适应四川的本地条件，对2013年至2021年中国南部和2017-2019年四川的监测数据应用了sequential Bayesian optimization：<img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813212231221.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="动力学模型拟合"><a href="#动力学模型拟合" class="headerlink" title="动力学模型拟合"></a>动力学模型拟合</h4><p><img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813211714827.png" srcset="/img/loading.gif" lazyload alt="在中国南方监测中观察到的每周发病率（灰色虚线；2013-2021年，n=8）以及sequential Bayesian optimization后的中位数后验模拟（带点的红色线）。"></p>
+<p>在中国南部的流感监测数据集中，动力学模型实现了0.0192的RMSE和5周的峰值时间误差。在纳入气候驱动参数后，RMSE降至0.0163，峰值时间误差减少至1周。</p>
+<p><img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813212742817.png" srcset="/img/loading.gif" lazyload></p>
+<p>在四川省数据集中，动力学模型产生了0.0459的RMSE和6.3周的峰值时间误差。当包括气候驱动因素时，RMSE提高至0.0401，峰值时间误差降至2.3周。进一步纳入反映人口密度和医疗资源的参数，RMSE保持在0.0401，但峰值时间误差减少至1周。</p>
+<h4 id="敏感性分析"><a href="#敏感性分析" class="headerlink" title="敏感性分析"></a>敏感性分析</h4><p>为了检验参数在不确定性范围内的变化对模型结果的影响，进行了敏感性分析。分析涉及使用序列贝叶斯优化的最优值，以及上下20%的界限，以评估关键参数变化的影响。成都、宜宾和阿坝被选为代表性研究区域。对于每个参数，记录了不同水平下的流感峰值时间（周）和峰值强度（峰值时感染的人口百分比）。</p>
+<p><img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813213140731.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>传播率参数：</strong>在±20%的变动范围内，$\beta_0$的较高值持续导致成都和宜宾的峰值更早出现和峰值流行率更高，证实了$\beta_0$的微小增加也会导致更早和更严重的爆发。相比之下，在阿坝，由于人口密度较低，同样的变化仅提前了峰值几周且稍微增加了峰值，这突出了人口稀少地区接触率的调节作用。</p>
+<p><strong>恢复率参数：</strong>主要影响了峰值的规模。对基础恢复率（γ ）的调整影响了峰值的严重程度，但对峰值时间几乎没有影响。这与发现一致，即改善医疗保健的可可及性降低了死亡率和医院负担，从而影响了疫情的时机。</p>
+<p><strong>人口密度参数：</strong>加速了城市地区感染早期传播。增加人口密度敏感系数$\sigma_\rho$在接触机会更频繁的成都使初始增长曲线变陡，而在宜宾和阿坝的效果较弱。这一发现支持了将城市化与呼吸道感染早期传播速度更快联系起来的研究。</p>
+<h4 id="基于阈值和RL的NPIs比较"><a href="#基于阈值和RL的NPIs比较" class="headerlink" title="基于阈值和RL的NPIs比较"></a>基于阈值和RL的NPIs比较</h4><p><img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813214705774.png" srcset="/img/loading.gif" lazyload alt="基于阈值的NPIs策略"></p>
+<p>基于阈值的NPI策略：一旦流感指数超过预定义的阈值，就开始干预，随着条件的改善逐渐放松。与无干预情景相比，平原地区的累计感染下降了3.67%，丘陵地区的下降了3.50%，高原地区的下降了3.05%。峰值感染率看到了更大的减少——平原地区12.58%，丘陵地区7.59%，高原地区8.26%。该策略在城市和人口密集的平原地区特别有效，及时激活NPIs可能减轻了早期快速传播。相比之下，尽管在丘陵和高山地区的减少较小，但在不同的环境和人口条件下，该策略仍然有助于有效控制疫情高峰。</p>
+<p>某些地区NPIs间歇性实施，由流感指数在短时间内多次接近阈值触发，这表明该策略对波动性流行病学信号有一定的敏感性。</p>
+<p><img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813214805258.png" srcset="/img/loading.gif" lazyload alt="基于RL的NPIs策略"></p>
+<p>RL以动态优化不同地区设置中NPIs的组合。结果表明，代理在平原、丘陵和高原城市分别减少了5.87%、5.99%和5.21%的累计感染数量。更有意义的是，它在峰值感染水平上实现了显著减少——平原地区34.92%，丘陵地区22.23%，高原地区8.12%。</p>
+<p>与基于阈值的方案相比，强化学习策略在确定干预的时间和持续时间方面表现出更大的灵活性。大多数干预措施持续约6-8周，非药物干预措施的强度和持续时间与每个城市的经济社会特征和医疗保健能力紧密相关。在策略偏好方面，强化学习方法表现出明显的区域适应性。在医疗基础设施有限的平原城市，模型优先考虑扩大医疗能力以解决资源限制。在人口密度高且接触频繁的平原城市，强调佩戴口罩以遏制快速传播。在山区城市，模型采用更平衡的措施组合——适度使用口罩、家庭隔离和医疗支持——在不造成过度经济或社会成本的情况下实现有效控制。</p>
+<p><img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813215110978.png" srcset="/img/loading.gif" lazyload alt="强化学习策略和基于阈值的方案下的感染轨迹对比"></p>
+<p><img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813215155608.png" srcset="/img/loading.gif" lazyload alt="不同策略下的总感染率、峰值感染率和干预时间比较。"></p>
+<p>结果显示强化学习不仅能够检测到疫情曲线的早期信号，而且能够更灵活地调整干预时机。这使得随着疫情的缓和，干预强度可以逐步降低，从而减轻了与政策措施频繁调整相关的社会和经济负担。</p>
+<h4 id="模型的泛化能力"><a href="#模型的泛化能力" class="headerlink" title="模型的泛化能力"></a>模型的泛化能力</h4><p><img src="https://gitee.com/xzy520-09/markdown-img/raw/master/20260813215525079.png" srcset="/img/loading.gif" lazyload alt="RL策略下的甘孜、绵阳和德阳等城市发病轨迹"></p>
+<p>通过将训练好的算法应用于甘孜、绵阳和德阳等城市来测试其泛化能力。结果揭示了累计感染人数分别减少了4.66%、4.92%和5.09%。此外，每个城市的峰值感染人数分别减少了3.96%、15.98%和15.40%。这些发现证实了模型的鲁棒性，证明了即使在应用于不同的城市环境中，它也能有效地做出响应。</p>
+<h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h3><h4 id="核心发现与模型表现"><a href="#核心发现与模型表现" class="headerlink" title="核心发现与模型表现"></a>核心发现与模型表现</h4><ul>
+<li><strong>区域异质性</strong>：通过多变量驱动的 SEIQR 模型发现，平原城市对传播率和人口密度最敏感；丘陵地区受潜伏期传染率和医疗资源弹性影响较大；高原地区则主要受基础恢复率和气候因素驱动。  </li>
+<li><strong>显著的防控效果</strong>：与无干预或传统阈值策略相比，SEIQR-D3QN框架将累计感染率降低了 **5.21% - 5.99%**，将峰值感染率大幅降低了 **8.12% - 34.92%**。  </li>
+<li><strong>良好的泛化能力</strong>：策略迁移实验证明，该模型在未经训练的其他城市中依然能保持稳定的防控效果。</li>
+</ul>
+<h4 id="研究价值"><a href="#研究价值" class="headerlink" title="研究价值"></a>研究价值</h4><ul>
+<li><strong>从被动到主动</strong>：传统基于阈值的策略（如达到多少感染率就触发干预）容易导致政策频繁波动、平原地区干预滞后或高原地区过度干预。引入 Dueling DQN 后，模型实现了“主动优化”。  </li>
+<li><strong>因地制宜控制成本</strong>：AI 学会了根据当地承载力动态调整干预组合：平原地区 100% 依赖戴口罩；高原地区将 94.93% 的干预重点放在医疗资源部署上；丘陵地区则采用平衡干预，并刻意减少居家隔离以降低经济损失。这种方式大大降低了政策频繁切换带来的社会成本。</li>
+</ul>
+<h4 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h4><ul>
+<li>气候参数使用的是历史平均值，无法反映极端天气的影响；人口迁移矩阵是静态的，忽略了如节假日等大规模突发人口流动。  </li>
+<li>目前奖励函数中的“经济损失”还需要完善，尚未包含具体的医疗成本和劳动力流失。  </li>
+<li>即使假设过于简单，模型假设大众对戴口罩和隔离的配合度只是随城市类型线性变化，但现实中不同年龄段、不同职业的配合度差异很大，需要更细致的问卷数据支持。</li>
+</ul>
+<h4 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h4><ul>
+<li><strong>引入实时大数据</strong>：未来计划接入实时流感监测数据、互联网搜索趋势等，打造实时数据同化管道，以减少预测延迟。  </li>
+<li><strong>多城市协同与全面评估</strong>：计划开发多智能体协调算法，模拟相邻城市间的资源共享与博弈；同时将 GDP 影响、教育中断和心理健康等长期因素纳入成本效益分析。  </li>
+<li><strong>跨疾病的广泛应用</strong>：该“理论+数据”双驱动框架具有极强的可扩展性，不仅适用于流感，还可用于 COVID-19、丙型肝炎（HCV）、结核病和登革热等其他急慢性传染病的防控策略优化。</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%B4%BE/" class="category-chain-item">学习派</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI-for-science/">#AI for science</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/08/11/%E5%AD%A6%E4%B9%A0%E6%B4%BE/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/PINN%E6%96%87%E7%8C%AE%E7%AC%94%E8%AE%B0/" title="Physics-informed deep learning for infectious disease forecasting">
+                        <span class="hidden-mobile">Physics-informed deep learning for infectious disease forecasting</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.18/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"xuJCbn6xtqaUGuWstQAPlGJJ-gzGzoHsz","appKey":"NIu4yQB2mPrtz9zJx3Svatjh","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+<!-- 雪花特效 -->
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="\js\snow.js"></script>
